@@ -719,14 +719,26 @@
     .demo-form.two{grid-template-columns:1fr 1fr}
     .demo-label{font-size:.92rem;color:var(--muted);display:grid;gap:8px}
     .demo-input,.demo-select{width:100%;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--text);border-radius:14px;padding:14px 16px;font:inherit;outline:none}
-    .demo-output{display:grid;gap:12px}
+    .demo-phone-wrap{display:flex;justify-content:center}
+    .demo-phone{width:min(100%,380px);background:#08111c;border:1px solid rgba(255,255,255,.12);border-radius:34px;padding:12px;box-shadow:0 24px 70px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06)}
+    .demo-phone-screen{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.08);border-radius:26px;padding:14px;min-height:560px;display:flex;flex-direction:column}
+    .demo-phone-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;color:#c7d4ea;font-size:.84rem}
+    .demo-notch{width:92px;height:24px;border-radius:999px;background:rgba(255,255,255,.08);margin:0 auto;position:relative;top:-4px}
+    .demo-appbar{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);margin-bottom:12px}
+    .demo-appmeta strong{display:block;font-size:.96rem}
+    .demo-appmeta span{font-size:.78rem;color:var(--muted)}
+    .demo-appdot{width:12px;height:12px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 14px rgba(103,232,249,.7)}
+    .demo-output{display:grid;gap:12px;flex:1;align-content:start}
     .demo-out{padding:14px 16px;border-radius:16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:#dce6f7}
     .demo-out.reply.cyan{background:rgba(103,232,249,.12);color:#d9fbff}
     .demo-out.reply.green{background:rgba(134,239,172,.12);color:#e1ffe9}
     .demo-out.reply.violet{background:rgba(196,181,253,.12);color:#f0eaff}
+    .demo-chip-row{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+    .demo-chip{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#dce6f7;font-size:.8rem}
     .demo-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    .demo-actions .btn{margin-top:0}
     @media (max-width:1100px){.demo-grid,.demo-modal-grid{grid-template-columns:1fr}}
-    @media (max-width:780px){.demo-form.two,.demo-actions,.demo-meta{grid-template-columns:1fr}.demo-modal-head{flex-direction:column}.demo-close{width:100%}}
+    @media (max-width:780px){.demo-form.two,.demo-actions,.demo-meta{grid-template-columns:1fr}.demo-modal-head{flex-direction:column}.demo-close{width:100%}.demo-modal{padding:0;align-items:flex-end}.demo-modal-panel{width:100%;max-height:100dvh;border-radius:22px 22px 0 0}.demo-modal-inner{padding:18px}.demo-modal-grid{gap:14px}.demo-phone{width:100%;max-width:none;border-radius:28px}.demo-phone-screen{min-height:auto}.demo-card{padding:18px}.demo-preview{padding:14px}.demo-bubble{max-width:92%}}
 
   </style>
 </head>
@@ -1312,11 +1324,27 @@
           </div>
           <div class="demo-panel dark">
             <p class="demo-panel-title" data-i18n="demo_output_title">Live AI output</p>
-            <div class="demo-output">
-              <div class="demo-out" id="auto-out-1"></div>
-              <div class="demo-out" id="auto-out-2"></div>
-              <div class="demo-out" id="auto-out-3"></div>
-              <div class="demo-out reply cyan" id="auto-out-4"></div>
+            <div class="demo-phone-wrap">
+              <div class="demo-phone">
+                <div class="demo-notch"></div>
+                <div class="demo-phone-screen">
+                  <div class="demo-phone-top"><span>9:41</span><span>5G • 100%</span></div>
+                  <div class="demo-appbar">
+                    <div class="demo-appmeta"><strong>AutoFlow AI</strong><span data-i18n="demo_phone_auto">Live booking preview</span></div>
+                    <div class="demo-appdot"></div>
+                  </div>
+                  <div class="demo-chip-row">
+                    <span class="demo-chip" data-i18n="demo_chip_fast">Fast quote</span>
+                    <span class="demo-chip" data-i18n="demo_chip_live">Live slot</span>
+                  </div>
+                  <div class="demo-output">
+                    <div class="demo-out" id="auto-out-1"></div>
+                    <div class="demo-out" id="auto-out-2"></div>
+                    <div class="demo-out" id="auto-out-3"></div>
+                    <div class="demo-out reply cyan" id="auto-out-4"></div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="demo-actions">
               <a class="btn btn-primary" id="auto-wa" href="#" target="_blank" rel="noopener" data-i18n="demo_book_btn">Book This Demo</a>
@@ -1361,11 +1389,27 @@
           </div>
           <div class="demo-panel dark">
             <p class="demo-panel-title" data-i18n="demo_output_title">Live AI output</p>
-            <div class="demo-output">
-              <div class="demo-out" id="table-out-1"></div>
-              <div class="demo-out" id="table-out-2"></div>
-              <div class="demo-out" id="table-out-3"></div>
-              <div class="demo-out reply green" id="table-out-4"></div>
+            <div class="demo-phone-wrap">
+              <div class="demo-phone">
+                <div class="demo-notch"></div>
+                <div class="demo-phone-screen">
+                  <div class="demo-phone-top"><span>9:41</span><span>Wi‑Fi • 100%</span></div>
+                  <div class="demo-appbar">
+                    <div class="demo-appmeta"><strong>TableFlow AI</strong><span data-i18n="demo_phone_table">Live reservation preview</span></div>
+                    <div class="demo-appdot"></div>
+                  </div>
+                  <div class="demo-chip-row">
+                    <span class="demo-chip" data-i18n="demo_chip_guest">Guest reply</span>
+                    <span class="demo-chip" data-i18n="demo_chip_reminder">Reminder sent</span>
+                  </div>
+                  <div class="demo-output">
+                    <div class="demo-out" id="table-out-1"></div>
+                    <div class="demo-out" id="table-out-2"></div>
+                    <div class="demo-out" id="table-out-3"></div>
+                    <div class="demo-out reply green" id="table-out-4"></div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="demo-actions">
               <a class="btn btn-primary" id="table-wa" href="#" target="_blank" rel="noopener" data-i18n="demo_book_btn">Book This Demo</a>
@@ -1410,11 +1454,27 @@
           </div>
           <div class="demo-panel dark">
             <p class="demo-panel-title" data-i18n="demo_output_title">Live AI output</p>
-            <div class="demo-output">
-              <div class="demo-out" id="shift-out-1"></div>
-              <div class="demo-out" id="shift-out-2"></div>
-              <div class="demo-out" id="shift-out-3"></div>
-              <div class="demo-out reply violet" id="shift-out-4"></div>
+            <div class="demo-phone-wrap">
+              <div class="demo-phone">
+                <div class="demo-notch"></div>
+                <div class="demo-phone-screen">
+                  <div class="demo-phone-top"><span>9:41</span><span>LTE • 92%</span></div>
+                  <div class="demo-appbar">
+                    <div class="demo-appmeta"><strong>ShiftGuard AI</strong><span data-i18n="demo_phone_shift">Live shift preview</span></div>
+                    <div class="demo-appdot"></div>
+                  </div>
+                  <div class="demo-chip-row">
+                    <span class="demo-chip" data-i18n="demo_chip_dispatch">Dispatch AI</span>
+                    <span class="demo-chip" data-i18n="demo_chip_fill">Open shift filled</span>
+                  </div>
+                  <div class="demo-output">
+                    <div class="demo-out" id="shift-out-1"></div>
+                    <div class="demo-out" id="shift-out-2"></div>
+                    <div class="demo-out" id="shift-out-3"></div>
+                    <div class="demo-out reply violet" id="shift-out-4"></div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="demo-actions">
               <a class="btn btn-primary" id="shift-wa" href="#" target="_blank" rel="noopener" data-i18n="demo_book_btn">Book This Demo</a>
@@ -1928,7 +1988,9 @@
         demo_auto_form_title: "Interactive booking", demo_table_form_title: "Interactive reservation", demo_shift_form_title: "Interactive shift planner", demo_output_title: "Live AI output",
         demo_label_service: "Service", demo_label_vehicle: "Vehicle", demo_label_day: "Day", demo_label_slot: "Time slot",
         demo_label_guests: "Guests", demo_label_time: "Time", demo_label_area: "Seating preference", demo_label_occasion: "Occasion",
-        demo_label_site: "Site", demo_label_shift_type: "Shift type", demo_label_workers: "Guards needed", demo_label_coverage: "Coverage source"
+        demo_label_site: "Site", demo_label_shift_type: "Shift type", demo_label_workers: "Guards needed", demo_label_coverage: "Coverage source",
+        demo_phone_auto: "Live booking preview", demo_phone_table: "Live reservation preview", demo_phone_shift: "Live shift preview",
+        demo_chip_fast: "Fast quote", demo_chip_live: "Live slot", demo_chip_guest: "Guest reply", demo_chip_reminder: "Reminder sent", demo_chip_dispatch: "Dispatch AI", demo_chip_fill: "Open shift filled"
       },
       sr: {
         demo_title: "Live demo proizvodi za tvoje najjače niše",
@@ -1963,7 +2025,9 @@
         demo_auto_form_title: "Interaktivno zakazivanje", demo_table_form_title: "Interaktivna rezervacija", demo_shift_form_title: "Interaktivni planer smena", demo_output_title: "Live AI output",
         demo_label_service: "Usluga", demo_label_vehicle: "Vozilo", demo_label_day: "Dan", demo_label_slot: "Termin",
         demo_label_guests: "Gosti", demo_label_time: "Vreme", demo_label_area: "Mesto sedenja", demo_label_occasion: "Povod",
-        demo_label_site: "Lokacija", demo_label_shift_type: "Tip smene", demo_label_workers: "Broj radnika", demo_label_coverage: "Način pokrivanja"
+        demo_label_site: "Lokacija", demo_label_shift_type: "Tip smene", demo_label_workers: "Broj radnika", demo_label_coverage: "Način pokrivanja",
+        demo_phone_auto: "Pregled bookinga uživo", demo_phone_table: "Pregled rezervacije uživo", demo_phone_shift: "Pregled smene uživo",
+        demo_chip_fast: "Brza ponuda", demo_chip_live: "Slobodan termin", demo_chip_guest: "Odgovor gosta", demo_chip_reminder: "Podsetnik poslat", demo_chip_dispatch: "AI dispatcher", demo_chip_fill: "Smena popunjena"
       },
       cz: {
         demo_title: "Živé demo produkty pro vaše nejlepší niky",
@@ -1998,7 +2062,9 @@
         demo_auto_form_title: "Interaktivní rezervace", demo_table_form_title: "Interaktivní rezervace stolu", demo_shift_form_title: "Interaktivní plánovač směn", demo_output_title: "Živý AI výstup",
         demo_label_service: "Služba", demo_label_vehicle: "Vozidlo", demo_label_day: "Den", demo_label_slot: "Termín",
         demo_label_guests: "Hosté", demo_label_time: "Čas", demo_label_area: "Místo sezení", demo_label_occasion: "Příležitost",
-        demo_label_site: "Lokalita", demo_label_shift_type: "Typ směny", demo_label_workers: "Počet pracovníků", demo_label_coverage: "Způsob pokrytí"
+        demo_label_site: "Lokalita", demo_label_shift_type: "Typ směny", demo_label_workers: "Počet pracovníků", demo_label_coverage: "Způsob pokrytí",
+        demo_phone_auto: "Živý náhled rezervace", demo_phone_table: "Živý náhled rezervace", demo_phone_shift: "Živý náhled směny",
+        demo_chip_fast: "Rychlá nabídka", demo_chip_live: "Volný termín", demo_chip_guest: "Odpověď hosta", demo_chip_reminder: "Připomínka odeslána", demo_chip_dispatch: "AI dispatcher", demo_chip_fill: "Směna obsazena"
       }
     };
     Object.keys(demoTranslations).forEach(lang => Object.assign(translations[lang], demoTranslations[lang]));
