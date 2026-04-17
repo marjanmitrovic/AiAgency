@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prague AI Growth | AI Systems for Prague Businesses</title>
+  <meta name="description" content="We help Prague businesses get more customers, save time, and automate operations with AI systems." />
+  <meta property="og:title" content="Prague AI Growth" />
+  <meta property="og:description" content="AI systems for Prague businesses." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="og-cover.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%238aa4ff'/%3E%3Cstop offset='1' stop-color='%2367e8f9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect rx='16' width='64' height='64' fill='%2307111f'/%3E%3Cpath d='M34 6 18 34h12l-4 24 20-31H34z' fill='url(%23g)'/%3E%3C/svg%3E" />
+  <style>
+    .hero-watermark{position:absolute;right:10px;top:10px;font-size:clamp(2rem,8vw,7rem);font-weight:900;letter-spacing:.2em;color:rgba(255,255,255,.03);pointer-events:none;z-index:1;user-select:none}
+
+    @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+    @keyframes spinSlow { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+    @keyframes spinReverse { from{transform:rotate(360deg)} to{transform:rotate(0)} }
+    @keyframes pulseGlow { 0%,100%{opacity:.55; transform:scale(1)} 50%{opacity:1; transform:scale(1.08)} }
+    @keyframes drift { 0%{transform:translate3d(0,0,0)} 50%{transform:translate3d(18px,-20px,0)} 100%{transform:translate3d(0,0,0)} }
+    @keyframes scanMove { 0%{transform:translateY(-130%)} 100%{transform:translateY(220%)} }
+    @keyframes shimmer { 0%{opacity:.15} 50%{opacity:.35} 100%{opacity:.15} }
+    .particle-field{position:absolute;inset:0;pointer-events:none}
+    .particle{position:absolute;width:6px;height:6px;border-radius:50%;background:rgba(103,232,249,.9);box-shadow:0 0 16px rgba(103,232,249,.75);animation:drift 8s ease-in-out infinite}
+    .p1{left:10%;top:18%;animation-delay:0s}.p2{left:22%;top:28%;animation-delay:1s}.p3{left:34%;top:16%;animation-delay:2s}.p4{left:48%;top:34%;animation-delay:3s}.p5{left:63%;top:14%;animation-delay:1.5s}.p6{left:74%;top:26%;animation-delay:2.5s}.p7{left:82%;top:18%;animation-delay:4s}.p8{left:16%;top:62%;animation-delay:3.5s}.p9{left:58%;top:58%;animation-delay:4.5s}.p10{left:86%;top:64%;animation-delay:5s}
+    .holo-grid{position:absolute;inset:0;background:radial-gradient(circle at center, rgba(103,232,249,.06), transparent 42%), linear-gradient(rgba(103,232,249,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(103,232,249,.04) 1px, transparent 1px);background-size:auto, 42px 42px, 42px 42px;mask-image:radial-gradient(circle at center, rgba(0,0,0,.8), transparent 78%);opacity:.55;animation:shimmer 6s ease-in-out infinite}
+    .logo-beam{position:absolute;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle, rgba(103,232,249,.22), transparent 62%);filter:blur(10px);animation:pulseGlow 4s ease-in-out infinite}
+    .logo-pulse{position:absolute;width:118px;height:118px;border-radius:50%;border:1px solid rgba(103,232,249,.22);animation:pulseGlow 3.2s ease-in-out infinite}
+    .hero-logo-mark{animation:floatY 5.5s ease-in-out infinite}
+    .orbit-x{animation:spinSlow 16s linear infinite}
+    .orbit-y{animation:spinReverse 22s linear infinite}
+    .hero-card{backdrop-filter: blur(14px)}
+    .brand-badge{animation:pulseGlow 4s ease-in-out infinite}
+    .founder-visual{backdrop-filter: blur(12px)}
+    .holo-scan{position:absolute;inset:-20% 0 auto 0;height:70px;background:linear-gradient(180deg, transparent, rgba(103,232,249,.18), transparent);filter:blur(10px);animation:scanMove 5.5s linear infinite;pointer-events:none}
+    .mini-particle{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 14px rgba(103,232,249,.7);animation:drift 7s ease-in-out infinite}
+    .mp1{left:22%;top:34%}.mp2{right:25%;top:28%;animation-delay:1.5s}.mp3{bottom:22%;left:56%;animation-delay:3s}
+    .trust-bar,.stat-card,.faq-card,.service-card,.price-card,.contact-card,.form-wrap{backdrop-filter: blur(10px)}
+
+    .hero-bg-tech{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;opacity:.98}
+    .tech-ring{position:absolute;border:1px solid rgba(103,232,249,.18);border-radius:50%;box-shadow:0 0 30px rgba(103,232,249,.08) inset}
+    .ring-a{width:420px;height:420px;right:-80px;top:20px;animation:spinSlow 40s linear infinite}
+    .ring-b{width:260px;height:260px;right:120px;top:130px;animation:spinReverse 28s linear infinite}
+    .ring-c{width:620px;height:620px;left:-220px;bottom:-260px;border-color:rgba(138,164,255,.12);animation:spinSlow 55s linear infinite}
+    .tech-node{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 18px rgba(103,232,249,.8)}
+    .node-1{right:180px;top:120px}.node-2{right:320px;top:260px}.node-3{left:140px;bottom:180px}
+    .tech-line{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(103,232,249,.4),transparent)}
+    .line-1{width:220px;right:170px;top:124px;transform:rotate(-28deg)}
+    .line-2{width:180px;right:255px;top:262px;transform:rotate(18deg)}
+    .hero-logo-mark{display:flex;align-items:center;justify-content:center;position:relative;height:130px;margin-bottom:10px}
+    .logo-core{width:78px;height:78px;border-radius:22px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#08111c;font-weight:900;font-size:1.35rem;box-shadow:0 20px 40px rgba(0,0,0,.35);z-index:2}
+    .logo-orbit{position:absolute;border:1px solid rgba(255,255,255,.12);border-radius:50%}
+    .orbit-x{width:118px;height:118px}
+    .orbit-y{width:148px;height:148px;border-color:rgba(103,232,249,.18)}
+    .stats-row {
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:18px;
+    }
+    .stat-card {
+      padding:20px;
+      border-radius:20px;
+      text-align:left;
+    }
+    .stat-card strong {
+      display:block;
+      font-size:1.35rem;
+      margin-bottom:6px;
+    }
+    .stat-card span {
+      color:var(--muted);
+      font-size:0.94rem;
+    }
+    .founder-visual {
+      min-height:260px;
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:24px;
+      background: radial-gradient(circle at center, rgba(103,232,249,0.12), transparent 45%), rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.08);
+      overflow:hidden;
+    }
+    .founder-core {
+      width:92px;
+      height:92px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      color:#08111c;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: var(--shadow);
+      z-index:2;
+    }
+    .founder-orbit {
+      position:absolute;
+      border:1px solid rgba(255,255,255,0.12);
+      border-radius:50%;
+    }
+    .orbit-1 { width:180px; height:180px; }
+    .orbit-2 { width:250px; height:250px; }
+    .faq-grid {
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+    }
+    .faq-card { padding:24px; border-radius:22px; }
+    .faq-card h3 { margin:0 0 10px; font-size:1.08rem; }
+    .faq-card p { margin:0; color:var(--muted); }
+
+    :root {
+      --bg: #07111f;
+      --bg-2: #0e1830;
+      --bg-3: #101b37;
+      --card: rgba(255,255,255,0.08);
+      --card-2: rgba(255,255,255,0.06);
+      --line: rgba(255,255,255,0.12);
+      --text: #eef4ff;
+      --muted: #aab7d4;
+      --accent: #8aa4ff;
+      --accent-2: #67e8f9;
+      --accent-3: #c4b5fd;
+      --success: #86efac;
+      --shadow: 0 25px 80px rgba(0,0,0,0.38);
+      --radius: 24px;
+      --radius-sm: 18px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-attachment: fixed;
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(103,232,249,0.14), transparent 28%),
+        radial-gradient(circle at 100% 0%, rgba(138,164,255,0.18), transparent 30%),
+        radial-gradient(circle at 50% 100%, rgba(196,181,253,0.10), transparent 34%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 58%, #0a1224 100%);
+      line-height: 1.6;
+    }
+
+    body::after {
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 15% 25%, rgba(103,232,249,0.10), transparent 18%),
+        radial-gradient(circle at 85% 20%, rgba(138,164,255,0.12), transparent 22%),
+        radial-gradient(circle at 70% 78%, rgba(196,181,253,0.10), transparent 20%),
+        linear-gradient(135deg, transparent 48%, rgba(255,255,255,0.02) 49%, transparent 50%),
+        linear-gradient(45deg, transparent 48%, rgba(255,255,255,0.02) 49%, transparent 50%);
+      background-size: auto, auto, auto, 120px 120px, 120px 120px;
+      z-index:0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0));
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(7,17,31,0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      font-size: 1.03rem;
+    }
+
+    .brand-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(138,164,255,0.28), rgba(103,232,249,0.25));
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: var(--shadow);
+      font-weight: 900;
+      color: var(--accent-2);
+    }
+
+    .brand span { color: var(--accent-2); }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      padding: 4px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      gap: 4px;
+    }
+
+    .lang-btn {
+      border: 0;
+      color: var(--muted);
+      background: transparent;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      min-width: 48px;
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #08111c;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      transition: transform 0.25s ease, opacity 0.25s ease, border-color 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #08111c;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .hero {
+      position:relative;
+      z-index:1;
+      padding: 92px 0 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      top: -80px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(103,232,249,0.18), transparent 64%);
+      pointer-events: none;
+      filter: blur(8px);
+    }
+
+    .hero-grid {
+      position:relative;z-index:2;
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(103,232,249,0.22);
+      background: rgba(103,232,249,0.07);
+      color: var(--accent-2);
+      font-size: 0.85rem;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -2px;
+      margin: 0 0 18px;
+      max-width: 760px;
+    }
+
+    .hero p {
+      font-size: 1.07rem;
+      color: var(--muted);
+      margin: 0 0 28px;
+      max-width: 700px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .proof {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .proof span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .card, .hero-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card::before, .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 35%);
+      pointer-events: none;
+    }
+
+    .hero-card { padding: 24px; }
+
+    .hero-topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .mini-tag {
+      display: inline-flex;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(134,239,172,0.12);
+      border: 1px solid rgba(134,239,172,0.18);
+      color: var(--success);
+      font-size: 0.8rem;
+      font-weight: 800;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .metric {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.45rem;
+      margin-bottom: 4px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    section { padding: 36px 0; }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      margin: 0 0 10px;
+      letter-spacing: -1px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grid-3, .pricing, .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card, .price-card, .step-card, .contact-card {
+      padding: 24px;
+    }
+
+    .service-card h3, .price-card h3, .step-card h3, .contact-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.12rem;
+    }
+
+    .service-card p, .price-card p, .step-card p, .contact-card p, .price-card li {
+      color: var(--muted);
+    }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-weight: 900;
+      color: var(--accent-2);
+      background: linear-gradient(135deg, rgba(138,164,255,0.22), rgba(103,232,249,0.17));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .industries {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .pill {
+      padding: 12px 16px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step-no {
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(138,164,255,0.18);
+      color: var(--accent-2);
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: 900;
+      margin: 6px 0 12px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--success), #bbf7d0);
+      color: #08111c;
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+    }
+
+    ul.clean li {
+      padding: 10px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .featured {
+      transform: translateY(-8px);
+      border-color: rgba(103,232,249,0.28);
+      background: linear-gradient(180deg, rgba(138,164,255,0.14), rgba(255,255,255,0.06));
+    }
+
+    .cta {
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .cta p { color: var(--muted); margin: 0; }
+
+    .form-wrap {
+      padding: 24px;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-form label {
+      font-size: 0.92rem;
+      color: var(--muted);
+      display: grid;
+      gap: 8px;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font: inherit;
+      outline: none;
+    }
+
+    .contact-form textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder { color: #90a1c4; }
+
+    .form-note {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin: 4px 0 0;
+    }
+
+    .contact-grid { margin-top: 18px; }
+
+    footer {
+      padding: 28px 0 44px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 60;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #25D366, #7df2a3);
+      color: #08111c;
+      font-size: 1.6rem;
+      font-weight: 900;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    @media (max-width: 1100px) {
+      .stats-row,
+      .faq-grid,
+      .founder-card {
+        grid-template-columns: 1fr !important;
+      }
+
+      .hero-grid,
+      .process,
+      .grid-3,
+      .pricing,
+      .cta,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured { transform: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+
+    @media (max-width: 780px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-actions {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .hero {
+        padding-top: 58px;
+      }
+
+      h1 { letter-spacing: -1.4px; }
+      .metric-grid { grid-template-columns: 1fr; }
+    }
+
+    /* demo products */
+    .demo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .demo-card{padding:24px}
+    .demo-preview{margin-top:16px;padding:16px;border-radius:18px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)}
+    .demo-preview-head{display:flex;justify-content:space-between;gap:10px;font-size:.9rem;color:var(--muted);margin-bottom:12px}
+    .demo-bubble{max-width:86%;padding:11px 13px;border-radius:16px;font-size:.92rem;line-height:1.55;margin-bottom:10px}
+    .demo-bubble.left{background:rgba(255,255,255,0.08);color:#dce6f7;border-bottom-left-radius:6px}
+    .demo-bubble.right{margin-left:auto;border-bottom-right-radius:6px}
+    .demo-bubble.cyan{background:rgba(103,232,249,.14);color:#d9fbff}
+    .demo-bubble.green{background:rgba(134,239,172,.14);color:#e1ffe9}
+    .demo-bubble.violet{background:rgba(196,181,253,.14);color:#f0eaff}
+    .demo-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:16px}
+    .demo-mini{padding:14px;border-radius:16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08)}
+    .demo-mini strong{display:block;font-size:1.1rem;margin-bottom:4px}
+    .demo-mini span{color:var(--muted);font-size:.9rem}
+    .demo-features{list-style:none;padding:0;margin:16px 0 0;color:var(--muted)}
+    .demo-features li{padding:8px 0;border-top:1px solid rgba(255,255,255,0.06)}
+    .demo-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(3,8,18,.74);backdrop-filter:blur(10px);z-index:120;padding:18px}
+    .demo-modal.active{display:flex}
+    .demo-modal-panel{width:min(1120px,100%);border-radius:28px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));border:1px solid rgba(255,255,255,0.1);box-shadow:var(--shadow)}
+    .demo-modal-inner{background:rgba(7,17,31,.96);padding:28px}
+    .demo-modal-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;margin-bottom:20px}
+    .demo-badge{display:inline-flex;padding:8px 12px;border-radius:999px;font-size:.82rem;font-weight:800;margin-bottom:12px;border:1px solid rgba(255,255,255,0.1)}
+    .demo-badge.cyan{background:rgba(103,232,249,.1);color:var(--accent-2)}
+    .demo-badge.green{background:rgba(134,239,172,.1);color:var(--success)}
+    .demo-badge.violet{background:rgba(196,181,253,.1);color:var(--accent-3)}
+    .demo-modal-title{font-size:clamp(1.8rem,3vw,2.8rem);line-height:1.05;margin:0 0 10px}
+    .demo-modal-desc{margin:0;color:var(--muted);max-width:760px}
+    .demo-close{border:1px solid rgba(255,255,255,0.12);background:rgba(255,255,255,0.05);color:var(--text);padding:12px 16px;border-radius:14px;font-weight:700;cursor:pointer}
+    .demo-modal-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .demo-panel{padding:22px;border-radius:22px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08)}
+    .demo-panel.dark{background:rgba(255,255,255,0.03)}
+    .demo-panel-title{font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 16px;font-weight:800}
+    .demo-form{display:grid;gap:14px}
+    .demo-form.two{grid-template-columns:1fr 1fr}
+    .demo-label{font-size:.92rem;color:var(--muted);display:grid;gap:8px}
+    .demo-input,.demo-select{width:100%;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--text);border-radius:14px;padding:14px 16px;font:inherit;outline:none}
+    .demo-output{display:grid;gap:12px}
+    .demo-out{padding:14px 16px;border-radius:16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);color:#dce6f7}
+    .demo-out.reply.cyan{background:rgba(103,232,249,.12);color:#d9fbff}
+    .demo-out.reply.green{background:rgba(134,239,172,.12);color:#e1ffe9}
+    .demo-out.reply.violet{background:rgba(196,181,253,.12);color:#f0eaff}
+    .demo-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+    @media (max-width:1100px){.demo-grid,.demo-modal-grid{grid-template-columns:1fr}}
+    @media (max-width:780px){.demo-form.two,.demo-actions,.demo-meta{grid-template-columns:1fr}.demo-modal-head{flex-direction:column}.demo-close{width:100%}}
+
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-badge"><svg viewBox='0 0 64 64' width='24' height='24' aria-hidden='true'><defs><linearGradient id='lg1' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='#8aa4ff'/><stop offset='100%' stop-color='#67e8f9'/></linearGradient></defs><path d='M35 4 18 33h12l-4 27 22-33H35z' fill='url(#lg1)'/></svg></span>
+        <span>Prague AI Growth</span><span style="font-size:0.72rem;color:var(--accent-2);display:block;line-height:1;">AUTOMATION STUDIO</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#services" data-i18n="nav_services">Services</a>
+        <a href="#process" data-i18n="nav_process">Process</a>
+        <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+        <a href="#contact" data-i18n="nav_contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="lang-switch" aria-label="Language switcher">
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="sr">SR</button>
+          <button class="lang-btn" data-lang="cz">CZ</button>
+        </div>
+        <a class="btn btn-primary" href="#contact" data-i18n="nav_cta">Free AI Audit</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section style="padding:18px 0 0; position:relative; z-index:1;">
+      <div class="container">
+        <div class="trust-bar card" style="padding:14px 18px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:space-between; border-radius:18px;">
+          <div style="font-weight:800;" data-i18n="trustbar_title">Built for speed, conversion, and real business use</div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; color:var(--muted); font-size:0.92rem;">
+            <span class="pill" data-i18n="trustbar_1">Prague-focused</span>
+            <span class="pill" data-i18n="trustbar_2">Fast implementation</span>
+            <span class="pill" data-i18n="trustbar_3">Revenue-first systems</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="hero">
+      <div class="hero-bg-tech">
+        <div class="particle-field">
+          <span class="particle p1"></span>
+          <span class="particle p2"></span>
+          <span class="particle p3"></span>
+          <span class="particle p4"></span>
+          <span class="particle p5"></span>
+          <span class="particle p6"></span>
+          <span class="particle p7"></span>
+          <span class="particle p8"></span>
+          <span class="particle p9"></span>
+          <span class="particle p10"></span>
+        </div>
+        <div class="holo-grid"></div>
+        <div class="tech-ring ring-a"></div>
+        <div class="tech-ring ring-b"></div>
+        <div class="tech-ring ring-c"></div>
+        <div class="tech-node node-1"></div>
+        <div class="tech-node node-2"></div>
+        <div class="tech-node node-3"></div>
+        <div class="tech-line line-1"></div>
+        <div class="tech-line line-2"></div>
+      </div>
+      <div class="container hero-grid">
+        <div class='hero-watermark'>PRAGUE AI GROWTH</div>
+        <div>
+          <div class="eyebrow" data-i18n="eyebrow">AI systems for local businesses in Prague</div>
+          <h1 data-i18n="hero_title">More customers. Less chaos. Smarter operations with AI.</h1>
+          <p data-i18n="hero_text">
+            We help Prague businesses automate customer communication, capture more leads, reduce missed opportunities, and save hours every week with practical AI systems.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact" data-i18n="hero_btn_1">Get a Free Audit</a>
+            <a class="btn btn-secondary" href="#pricing" data-i18n="hero_btn_2">See Packages</a>
+          </div>
+          <div class="proof">
+            <span data-i18n="proof_1">24/7 AI responses</span>
+            <span data-i18n="proof_2">Lead capture automation</span>
+            <span data-i18n="proof_3">Booking and follow-up systems</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="hero-logo-mark">
+            <div class="logo-beam"></div>
+            <div class="logo-pulse"></div>
+            <div class="logo-core"><svg viewBox='0 0 64 64' width='40' height='40'><defs><linearGradient id='lg2' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='#08111c'/><stop offset='100%' stop-color='#103040'/></linearGradient></defs><path d='M35 4 18 33h12l-4 27 22-33H35z' fill='url(#lg2)'/></svg></div>
+            <div class="logo-orbit orbit-x"></div>
+            <div class="logo-orbit orbit-y"></div>
+          </div>
+          <div class="hero-topline">
+            <h3 style="margin:0; font-size:1.24rem;" data-i18n="hero_card_title">What we build</h3>
+            <div class="mini-tag" data-i18n="hero_card_tag">Premium local AI systems</div>
+          </div>
+          <p style="margin:0; color:var(--muted);" data-i18n="hero_card_text">
+            Simple, revenue-focused AI systems for salons, restaurants, real estate, service businesses, and local brands.
+          </p>
+          <div class="metric-grid">
+            <div class="metric">
+              <strong>24/7</strong>
+              <span data-i18n="metric_1">Instant replies to leads and customer inquiries</span>
+            </div>
+            <div class="metric">
+              <strong>+Speed</strong>
+              <span data-i18n="metric_2">Faster responses without adding staff</span>
+            </div>
+            <div class="metric">
+              <strong>+Leads</strong>
+              <span data-i18n="metric_3">Capture and qualify prospects automatically</span>
+            </div>
+            <div class="metric">
+              <strong>+Time</strong>
+              <span data-i18n="metric_4">Owners spend less time on repetitive tasks</span>
+            </div>
+          </div>
+        </div>
+      </div>
+          <div class="container" style="margin-top:26px;">
+        <div class="stats-row">
+          <div class="card stat-card"><strong>24/7</strong><span data-i18n="stat_1">Lead response coverage</span></div>
+          <div class="card stat-card"><strong>3x</strong><span data-i18n="stat_2">Faster customer handling</span></div>
+          <div class="card stat-card"><strong>Less Admin</strong><span data-i18n="stat_3">More time for owners</span></div>
+          <div class="card stat-card"><strong>Higher Close Rate</strong><span data-i18n="stat_4">Better follow-up and qualification</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="why_title">Why businesses choose us</h2>
+          <p data-i18n="why_text">Because most owners do not need more software. They need a system that actually saves time and creates more sales.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card service-card">
+            <div class="icon">A</div>
+            <h3 data-i18n="why_1_title">Practical AI</h3>
+            <p data-i18n="why_1_text">We focus on workflows that improve response time, lead handling, and day-to-day operations.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon">B</div>
+            <h3 data-i18n="why_2_title">Built for local business</h3>
+            <p data-i18n="why_2_text">Our systems are designed for service businesses, local brands, and owners who need results quickly.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon">C</div>
+            <h3 data-i18n="why_3_title">Simple and scalable</h3>
+            <p data-i18n="why_3_text">Start with one automation, then expand into a smarter growth system over time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="services_title">Services that solve real business problems</h2>
+          <p data-i18n="services_text">We do not sell AI for the sake of AI. We build systems that help your business respond faster, book more clients, and operate with less friction.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card service-card">
+            <div class="icon">01</div>
+            <h3 data-i18n="service_1_title">AI Chatbots</h3>
+            <p data-i18n="service_1_text">Answer questions instantly, qualify leads, and guide customers to the next step.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon">02</div>
+            <h3 data-i18n="service_2_title">Lead Generation Systems</h3>
+            <p data-i18n="service_2_text">Capture inquiries from your website, forms, and social media into a simple workflow.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon">03</div>
+            <h3 data-i18n="service_3_title">Booking Automation</h3>
+            <p data-i18n="service_3_text">Reduce missed appointments with automated booking flows and reminders.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon">04</div>
+            <h3 data-i18n="service_4_title">Customer Support AI</h3>
+            <p data-i18n="service_4_text">Provide fast answers to common questions without hiring more support staff.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon">05</div>
+            <h3 data-i18n="service_5_title">Follow-Up Automation</h3>
+            <p data-i18n="service_5_text">Keep leads warm with timed follow-ups, reminders, and simple re-engagement campaigns.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon">06</div>
+            <h3 data-i18n="service_6_title">AI Business Audits</h3>
+            <p data-i18n="service_6_text">Find where your business is losing time, money, and customers, then fix it with automation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="demo-products">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="demo_title">Live demo products for your best niches</h2>
+          <p data-i18n="demo_text">Interactive product demos for auto services, restaurants, and security agencies. Click and test them like real mini apps.</p>
+        </div>
+        <div class="demo-grid">
+          <div class="card demo-card">
+            <div class="icon">A1</div>
+            <h3>AutoFlow AI</h3>
+            <p data-i18n="demo_auto_text">Booking, price estimate, and customer reply system for auto services.</p>
+            <div class="demo-preview">
+              <div class="demo-preview-head">
+                <span data-i18n="demo_auto_head">AI booking assistant</span>
+                <span class="status-ok" data-i18n="demo_status_online">Online</span>
+              </div>
+              <div class="demo-bubble left" data-i18n="demo_auto_b1">Hi, I need a tire change tomorrow.</div>
+              <div class="demo-bubble right cyan" data-i18n="demo_auto_b2">We have free slots at 09:00, 11:30, and 15:00. Which one works for you?</div>
+              <div class="demo-bubble left" data-i18n="demo_auto_b3">11:30. Price for BMW 3?</div>
+              <div class="demo-bubble right cyan" data-i18n="demo_auto_b4">Estimated price is 900–1200 CZK. Booking reserved for 11:30.</div>
+            </div>
+            <div class="demo-meta">
+              <div class="demo-mini"><strong>-38%</strong><span data-i18n="demo_auto_stat1">Less phone calls</span></div>
+              <div class="demo-mini"><strong>24/7</strong><span data-i18n="demo_auto_stat2">Bookings captured</span></div>
+            </div>
+            <ul class="demo-features">
+              <li data-i18n="demo_auto_f1">Online service booking</li>
+              <li data-i18n="demo_auto_f2">AI pricing and time answers</li>
+              <li data-i18n="demo_auto_f3">Reminders and status updates</li>
+            </ul>
+            <button class="btn btn-primary demo-open" type="button" data-demo="auto" data-i18n="demo_open_auto">Test AutoFlow Demo</button>
+          </div>
+
+          <div class="card demo-card">
+            <div class="icon">R1</div>
+            <h3>TableFlow AI</h3>
+            <p data-i18n="demo_table_text">Reservations, reminders, and guest replies for restaurants and cafes.</p>
+            <div class="demo-preview">
+              <div class="demo-preview-head">
+                <span data-i18n="demo_table_head">Reservation AI</span>
+                <span class="status-ok" data-i18n="demo_status_open23">Open until 23:00</span>
+              </div>
+              <div class="demo-bubble left" data-i18n="demo_table_b1">Table for 2 tonight?</div>
+              <div class="demo-bubble right green" data-i18n="demo_table_b2">Yes, available at 19:30 or 21:00.</div>
+              <div class="demo-bubble left" data-i18n="demo_table_b3">19:30 near the window.</div>
+              <div class="demo-bubble right green" data-i18n="demo_table_b4">Confirmed. Reminder will be sent automatically.</div>
+            </div>
+            <div class="demo-meta">
+              <div class="demo-mini"><strong>-27%</strong><span data-i18n="demo_table_stat1">No-shows reduced</span></div>
+              <div class="demo-mini"><strong>+24%</strong><span data-i18n="demo_table_stat2">Reservations</span></div>
+            </div>
+            <ul class="demo-features">
+              <li data-i18n="demo_table_f1">Website and WhatsApp bookings</li>
+              <li data-i18n="demo_table_f2">Automatic guest reminders</li>
+              <li data-i18n="demo_table_f3">Menu and FAQ replies 24/7</li>
+            </ul>
+            <button class="btn btn-primary demo-open" type="button" data-demo="table" data-i18n="demo_open_table">Test TableFlow Demo</button>
+          </div>
+
+          <div class="card demo-card">
+            <div class="icon">S1</div>
+            <h3>ShiftGuard AI</h3>
+            <p data-i18n="demo_shift_text">Smart scheduling and open-shift handling for security agencies.</p>
+            <div class="demo-preview">
+              <div class="demo-preview-head">
+                <span data-i18n="demo_shift_head">Smart shift planner</span>
+                <span class="status-warn" data-i18n="demo_status_open_shift">1 open shift</span>
+              </div>
+              <div class="demo-bubble left" data-i18n="demo_shift_b1">Saturday day shift is still open.</div>
+              <div class="demo-bubble right violet" data-i18n="demo_shift_b2">Alert sent to available guards nearby.</div>
+              <div class="demo-bubble left" data-i18n="demo_shift_b3">I can take it.</div>
+              <div class="demo-bubble right violet" data-i18n="demo_shift_b4">Shift assigned and payroll updated.</div>
+            </div>
+            <div class="demo-meta">
+              <div class="demo-mini"><strong>12h/week</strong><span data-i18n="demo_shift_stat1">Admin time saved</span></div>
+              <div class="demo-mini"><strong data-i18n="demo_fast">Faster</strong><span data-i18n="demo_shift_stat2">Open shifts filled</span></div>
+            </div>
+            <ul class="demo-features">
+              <li data-i18n="demo_shift_f1">Shift planning and replacements</li>
+              <li data-i18n="demo_shift_f2">Open-shift AI dispatcher</li>
+              <li data-i18n="demo_shift_f3">Attendance and payroll export</li>
+            </ul>
+            <button class="btn btn-primary demo-open" type="button" data-demo="shift" data-i18n="demo_open_shift">Test ShiftGuard Demo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="industries_title">Best fit industries</h2>
+          <p data-i18n="industries_text">We focus on local businesses where speed, consistency, and better lead handling create immediate value.</p>
+        </div>
+        <div class="industries">
+          <div class="pill" data-i18n="industry_1">Beauty salons</div>
+          <div class="pill" data-i18n="industry_2">Barbershops</div>
+          <div class="pill" data-i18n="industry_3">Restaurants</div>
+          <div class="pill" data-i18n="industry_4">Auto services</div>
+          <div class="pill" data-i18n="industry_5">Real estate</div>
+          <div class="pill" data-i18n="industry_6">Dental clinics</div>
+          <div class="pill" data-i18n="industry_7">Moving companies</div>
+          <div class="pill" data-i18n="industry_8">Service businesses</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="process_title">How it works</h2>
+          <p data-i18n="process_text">A simple process focused on speed, clarity, and measurable business impact.</p>
+        </div>
+        <div class="process">
+          <div class="card step-card">
+            <div class="step-no">1</div>
+            <h3 data-i18n="step_1_title">Audit</h3>
+            <p data-i18n="step_1_text">We identify where your business is losing leads, time, and opportunities.</p>
+          </div>
+          <div class="card step-card">
+            <div class="step-no">2</div>
+            <h3 data-i18n="step_2_title">Design</h3>
+            <p data-i18n="step_2_text">We propose a practical AI workflow tailored to your specific business needs.</p>
+          </div>
+          <div class="card step-card">
+            <div class="step-no">3</div>
+            <h3 data-i18n="step_3_title">Build</h3>
+            <p data-i18n="step_3_text">We set up the automation, messaging, booking, or support system.</p>
+          </div>
+          <div class="card step-card">
+            <div class="step-no">4</div>
+            <h3 data-i18n="step_4_title">Optimize</h3>
+            <p data-i18n="step_4_text">We refine performance and help you get more value from the system over time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="results_title">What this can look like in practice</h2>
+          <p data-i18n="results_text">Examples of the kind of improvements a strong AI workflow can create for local businesses.</p>
+        </div>
+        <div class="grid-3">
+          <div class="card service-card">
+            <div class="icon">R1</div>
+            <h3 data-i18n="result_1_title">Salon</h3>
+            <p data-i18n="result_1_text">Faster replies, fewer missed messages, more booked appointments from Instagram and web inquiries.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon">R2</div>
+            <h3 data-i18n="result_2_title">Restaurant</h3>
+            <p data-i18n="result_2_text">Automatic answers for bookings, opening hours, and frequent questions even outside working hours.</p>
+          </div>
+          <div class="card service-card">
+            <div class="icon">R3</div>
+            <h3 data-i18n="result_3_title">Auto Service</h3>
+            <p data-i18n="result_3_text">Better lead collection, structured customer requests, and stronger follow-up after initial contact.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="founder_title">Built by a founder who thinks in systems</h2>
+          <p data-i18n="founder_text">Prague AI Growth is focused on one goal: helping local businesses use AI in a practical, profitable, and understandable way.</p>
+        </div>
+        <div class="card founder-card" style="padding:28px; display:grid; grid-template-columns: 0.95fr 1.05fr; gap:24px; align-items:center;">
+          <div>
+            <div class="eyebrow" data-i18n="founder_badge">Founder-led agency</div>
+            <h3 style="font-size:1.6rem; margin:0 0 12px;" data-i18n="founder_card_title">Strategy, automation, and execution in one place</h3>
+            <p style="color:var(--muted); margin:0;" data-i18n="founder_card_text">You work directly with someone who understands digital products, workflow design, and how to turn AI into a real business advantage.</p>
+          </div>
+          <div class="founder-visual">
+            <div class="holo-scan"></div>
+            <div class="mini-particle mp1"></div>
+            <div class="mini-particle mp2"></div>
+            <div class="mini-particle mp3"></div>
+            <div class="founder-orbit orbit-1"></div>
+            <div class="founder-orbit orbit-2"></div>
+            <div class="founder-core">AI</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="pricing_title">Simple packages</h2>
+          <p data-i18n="pricing_text">Start with a focused setup, then expand as your business grows.</p>
+        </div>
+        <div class="pricing">
+          <div class="card price-card">
+            <h3 data-i18n="starter_title">Starter</h3>
+            <div class="price">€299</div>
+            <p data-i18n="starter_text">For small businesses that want basic AI support and fast replies.</p>
+            <ul class="clean">
+              <li data-i18n="starter_1">AI chatbot setup</li>
+              <li data-i18n="starter_2">FAQ automation</li>
+              <li data-i18n="starter_3">Basic lead capture</li>
+              <li data-i18n="starter_4">1 revision round</li>
+            </ul>
+          </div>
+
+          <div class="card price-card featured">
+            <div class="tag" data-i18n="popular_tag">Most Popular</div>
+            <h3 data-i18n="growth_title">Growth</h3>
+            <div class="price">€699</div>
+            <p data-i18n="growth_text">For businesses that want better lead flow, follow-up, and booking automation.</p>
+            <ul class="clean">
+              <li data-i18n="growth_1">Everything in Starter</li>
+              <li data-i18n="growth_2">Booking workflow</li>
+              <li data-i18n="growth_3">Automated reminders</li>
+              <li data-i18n="growth_4">Lead qualification</li>
+              <li data-i18n="growth_5">Follow-up flow</li>
+            </ul>
+          </div>
+
+          <div class="card price-card">
+            <h3 data-i18n="premium_title">Premium</h3>
+            <div class="price">€1499</div>
+            <p data-i18n="premium_text">For owners who want a custom AI system that saves time and supports growth.</p>
+            <ul class="clean">
+              <li data-i18n="premium_1">Custom AI workflow</li>
+              <li data-i18n="premium_2">CRM connection</li>
+              <li data-i18n="premium_3">Advanced automation</li>
+              <li data-i18n="premium_4">Priority support</li>
+              <li data-i18n="premium_5">Optimization session</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="faq_title">Common questions</h2>
+          <p data-i18n="faq_text">Clear answers for owners who want results, not complexity.</p>
+        </div>
+        <div class="faq-grid">
+          <div class="card faq-card"><h3 data-i18n="faq_1_title">Do I need technical knowledge?</h3><p data-i18n="faq_1_text">No. We build and explain the system in a simple way so you can use it without technical stress.</p></div>
+          <div class="card faq-card"><h3 data-i18n="faq_2_title">Can I start small?</h3><p data-i18n="faq_2_text">Yes. Many businesses start with one chatbot, one lead form, or one booking flow and expand later.</p></div>
+          <div class="card faq-card"><h3 data-i18n="faq_3_title">Is this only for big companies?</h3><p data-i18n="faq_3_text">No. It is often most valuable for smaller businesses where time and missed leads matter the most.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card cta">
+          <div>
+            <h2 style="margin:0 0 10px; font-size:clamp(1.8rem, 3vw, 2.9rem); letter-spacing:-1px;" data-i18n="cta_title">Get a free AI audit for your business</h2>
+            <p data-i18n="cta_text">We will show you where your business can save time, reduce missed opportunities, and improve customer response with practical AI systems.</p>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:14px; align-items:center;">
+            <a class="btn btn-primary" href="#contact" data-i18n="cta_btn_1">Request Audit</a>
+            <a class="btn btn-secondary" href="mailto:marjan.posao@gmail.com" data-i18n="cta_btn_2">Email Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2 data-i18n="contact_title">Contact</h2>
+          <p data-i18n="contact_text">Ready to make your business faster, more responsive, and easier to run?</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card form-wrap" style="grid-column: span 2;">
+            <form class="contact-form" action="mailto:marjan.posao@gmail.com" method="post" enctype="text/plain">
+              <label>
+                <span data-i18n="form_name">Your name</span>
+                <input type="text" name="name" data-i18n-placeholder="form_name_ph" placeholder="Your name" />
+              </label>
+              <label>
+                <span data-i18n="form_email">Your email</span>
+                <input type="email" name="email" data-i18n-placeholder="form_email_ph" placeholder="you@example.com" />
+              </label>
+              <label>
+                <span data-i18n="form_business">Business type</span>
+                <select name="business_type">
+                  <option data-i18n="opt_1">Salon / Barber</option>
+                  <option data-i18n="opt_2">Restaurant / Cafe</option>
+                  <option data-i18n="opt_3">Auto service</option>
+                  <option data-i18n="opt_4">Real estate</option>
+                  <option data-i18n="opt_5">Clinic / Dental</option>
+                  <option data-i18n="opt_6">Other</option>
+                </select>
+              </label>
+              <label>
+                <span data-i18n="form_message">What do you need help with?</span>
+                <textarea name="message" data-i18n-placeholder="form_message_ph" placeholder="Tell us what you want to automate or improve."></textarea>
+              </label>
+              <button class="btn btn-primary" type="submit" data-i18n="form_submit">Send request</button>
+              <p class="form-note" data-i18n="form_note">This form opens your default email app. You can also contact us directly by email or WhatsApp.</p>
+            </form>
+          </div>
+
+          <div>
+            <div class="card contact-card">
+              <h3 data-i18n="contact_card_1_title">Email</h3>
+              <p><a href="mailto:marjan.posao@gmail.com">marjan.posao@gmail.com</a></p>
+            </div>
+            <div class="card contact-card" style="margin-top:18px;">
+              <h3 data-i18n="contact_card_2_title">Location</h3>
+              <p data-i18n="contact_card_2_text">Prague, Czech Republic</p>
+            </div>
+            <div class="card contact-card" style="margin-top:18px;">
+              <h3 data-i18n="contact_card_3_title">Fast contact</h3>
+              <p data-i18n="contact_card_3_text">Use WhatsApp for a quick conversation and a free audit request.</p>
+              <a class="btn btn-secondary" href="https://wa.me/420722080268?text=Hello%2C%20I%20want%20a%20free%20AI%20audit%20for%20my%20business." target="_blank" rel="noopener" data-i18n="contact_card_3_btn">Open WhatsApp</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="card contact-card">
+            <h3 data-i18n="mini_1_title">Response</h3>
+            <p data-i18n="mini_1_text">We focus on fast answers and practical business solutions.</p>
+          </div>
+          <div class="card contact-card">
+            <h3 data-i18n="mini_2_title">Goal</h3>
+            <p data-i18n="mini_2_text">More leads, less manual work, and better follow-up.</p>
+          </div>
+          <div class="card contact-card">
+            <h3 data-i18n="mini_3_title">Offer</h3>
+            <p data-i18n="mini_3_text">Free AI audit for local businesses in Prague.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="demo-modal" id="demo-auto" aria-hidden="true">
+    <div class="demo-modal-panel">
+      <div class="demo-modal-inner">
+        <div class="demo-modal-head">
+          <div>
+            <div class="demo-badge cyan" data-i18n="demo_badge_auto">Auto services</div>
+            <h3 class="demo-modal-title">AutoFlow AI</h3>
+            <p class="demo-modal-desc" data-i18n="demo_auto_modal_desc">Interactive booking, pricing, and customer communication flow for auto services.</p>
+          </div>
+          <button class="demo-close" type="button" data-demo-close data-i18n="demo_close">Close</button>
+        </div>
+        <div class="demo-modal-grid">
+          <div class="demo-panel">
+            <p class="demo-panel-title" data-i18n="demo_auto_form_title">Interactive booking</p>
+            <div class="demo-form">
+              <label class="demo-label"><span data-i18n="demo_label_service">Service</span>
+                <select class="demo-select" id="auto-service">
+                  <option value="tire">Tire Change</option>
+                  <option value="oil">Oil Change</option>
+                  <option value="diag">Diagnostics</option>
+                </select>
+              </label>
+              <label class="demo-label"><span data-i18n="demo_label_vehicle">Vehicle</span>
+                <input class="demo-input" id="auto-vehicle" value="BMW 3 Series" />
+              </label>
+              <div class="demo-form two">
+                <label class="demo-label"><span data-i18n="demo_label_day">Day</span>
+                  <select class="demo-select" id="auto-day">
+                    <option value="tomorrow">Tomorrow</option>
+                    <option value="friday">Friday</option>
+                    <option value="saturday">Saturday</option>
+                  </select>
+                </label>
+                <label class="demo-label"><span data-i18n="demo_label_slot">Time slot</span>
+                  <select class="demo-select" id="auto-slot">
+                    <option>09:00</option>
+                    <option selected>11:30</option>
+                    <option>15:00</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="demo-panel dark">
+            <p class="demo-panel-title" data-i18n="demo_output_title">Live AI output</p>
+            <div class="demo-output">
+              <div class="demo-out" id="auto-out-1"></div>
+              <div class="demo-out" id="auto-out-2"></div>
+              <div class="demo-out" id="auto-out-3"></div>
+              <div class="demo-out reply cyan" id="auto-out-4"></div>
+            </div>
+            <div class="demo-actions">
+              <a class="btn btn-primary" id="auto-wa" href="#" target="_blank" rel="noopener" data-i18n="demo_book_btn">Book This Demo</a>
+              <a class="btn btn-secondary" href="#contact" data-i18n="demo_contact_btn">Contact Sales</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-modal" id="demo-table" aria-hidden="true">
+    <div class="demo-modal-panel">
+      <div class="demo-modal-inner">
+        <div class="demo-modal-head">
+          <div>
+            <div class="demo-badge green" data-i18n="demo_badge_table">Restaurants</div>
+            <h3 class="demo-modal-title">TableFlow AI</h3>
+            <p class="demo-modal-desc" data-i18n="demo_table_modal_desc">Interactive reservation and reminder flow for restaurants and cafes.</p>
+          </div>
+          <button class="demo-close" type="button" data-demo-close data-i18n="demo_close">Close</button>
+        </div>
+        <div class="demo-modal-grid">
+          <div class="demo-panel">
+            <p class="demo-panel-title" data-i18n="demo_table_form_title">Interactive reservation</p>
+            <div class="demo-form">
+              <div class="demo-form two">
+                <label class="demo-label"><span data-i18n="demo_label_guests">Guests</span>
+                  <select class="demo-select" id="table-guests"><option>2</option><option>4</option><option>6</option></select>
+                </label>
+                <label class="demo-label"><span data-i18n="demo_label_time">Time</span>
+                  <select class="demo-select" id="table-time"><option>18:00</option><option selected>19:30</option><option>21:00</option></select>
+                </label>
+              </div>
+              <label class="demo-label"><span data-i18n="demo_label_area">Seating preference</span>
+                <select class="demo-select" id="table-area"><option value="window">Window table</option><option value="terrace">Terrace</option><option value="quiet">Quiet corner</option></select>
+              </label>
+              <label class="demo-label"><span data-i18n="demo_label_occasion">Occasion</span>
+                <select class="demo-select" id="table-occasion"><option value="dinner">Dinner</option><option value="birthday">Birthday</option><option value="meeting">Business meeting</option></select>
+              </label>
+            </div>
+          </div>
+          <div class="demo-panel dark">
+            <p class="demo-panel-title" data-i18n="demo_output_title">Live AI output</p>
+            <div class="demo-output">
+              <div class="demo-out" id="table-out-1"></div>
+              <div class="demo-out" id="table-out-2"></div>
+              <div class="demo-out" id="table-out-3"></div>
+              <div class="demo-out reply green" id="table-out-4"></div>
+            </div>
+            <div class="demo-actions">
+              <a class="btn btn-primary" id="table-wa" href="#" target="_blank" rel="noopener" data-i18n="demo_book_btn">Book This Demo</a>
+              <a class="btn btn-secondary" href="#contact" data-i18n="demo_contact_btn">Contact Sales</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-modal" id="demo-shift" aria-hidden="true">
+    <div class="demo-modal-panel">
+      <div class="demo-modal-inner">
+        <div class="demo-modal-head">
+          <div>
+            <div class="demo-badge violet" data-i18n="demo_badge_shift">Security agencies</div>
+            <h3 class="demo-modal-title">ShiftGuard AI</h3>
+            <p class="demo-modal-desc" data-i18n="demo_shift_modal_desc">Interactive scheduling flow for security agencies and shift-based companies.</p>
+          </div>
+          <button class="demo-close" type="button" data-demo-close data-i18n="demo_close">Close</button>
+        </div>
+        <div class="demo-modal-grid">
+          <div class="demo-panel">
+            <p class="demo-panel-title" data-i18n="demo_shift_form_title">Interactive shift planner</p>
+            <div class="demo-form">
+              <label class="demo-label"><span data-i18n="demo_label_site">Site</span>
+                <input class="demo-input" id="shift-site" value="Prague 5 Office Park" />
+              </label>
+              <div class="demo-form two">
+                <label class="demo-label"><span data-i18n="demo_label_shift_type">Shift type</span>
+                  <select class="demo-select" id="shift-type"><option value="night">Night Shift</option><option value="day">Day Shift</option><option value="evening">Evening Shift</option></select>
+                </label>
+                <label class="demo-label"><span data-i18n="demo_label_workers">Guards needed</span>
+                  <select class="demo-select" id="shift-workers"><option>1</option><option selected>2</option><option>3</option></select>
+                </label>
+              </div>
+              <label class="demo-label"><span data-i18n="demo_label_coverage">Coverage source</span>
+                <select class="demo-select" id="shift-coverage"><option value="nearby">Available guard nearby</option><option value="broadcast">Broadcast open shift alert</option><option value="backup">Use backup team</option></select>
+              </label>
+            </div>
+          </div>
+          <div class="demo-panel dark">
+            <p class="demo-panel-title" data-i18n="demo_output_title">Live AI output</p>
+            <div class="demo-output">
+              <div class="demo-out" id="shift-out-1"></div>
+              <div class="demo-out" id="shift-out-2"></div>
+              <div class="demo-out" id="shift-out-3"></div>
+              <div class="demo-out reply violet" id="shift-out-4"></div>
+            </div>
+            <div class="demo-actions">
+              <a class="btn btn-primary" id="shift-wa" href="#" target="_blank" rel="noopener" data-i18n="demo_book_btn">Book This Demo</a>
+              <a class="btn btn-secondary" href="#contact" data-i18n="demo_contact_btn">Contact Sales</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="container footer-inner">
+      <div data-i18n="footer_1">© 2026 Prague AI Growth. All rights reserved.</div>
+      <div data-i18n="footer_2">AI systems for local business growth.</div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/420722080268?text=Hello%2C%20I%20want%20a%20free%20AI%20audit%20for%20my%20business." target="_blank" rel="noopener" aria-label="WhatsApp">W</a>
+
+  <script>
+    const translations = {
+      en: {
+        nav_services: "Services",
+        nav_process: "Process",
+        nav_pricing: "Pricing",
+        nav_contact: "Contact",
+        nav_cta: "Free AI Audit",
+        eyebrow: "AI systems for local businesses in Prague",
+        hero_title: "More customers. Less chaos. Smarter operations with AI.",
+        hero_text: "We help Prague businesses automate customer communication, capture more leads, reduce missed opportunities, and save hours every week with practical AI systems.",
+        hero_btn_1: "Get a Free Audit",
+        hero_btn_2: "See Packages",
+        proof_1: "24/7 AI responses",
+        proof_2: "Lead capture automation",
+        proof_3: "Booking and follow-up systems",
+        hero_card_title: "What we build",
+        hero_card_tag: "Premium local AI systems",
+        hero_card_text: "Simple, revenue-focused AI systems for salons, restaurants, real estate, service businesses, and local brands.",
+        metric_1: "Instant replies to leads and customer inquiries",
+        metric_2: "Faster responses without adding staff",
+        metric_3: "Capture and qualify prospects automatically",
+        metric_4: "Owners spend less time on repetitive tasks",
+        services_title: "Services that solve real business problems",
+        services_text: "We do not sell AI for the sake of AI. We build systems that help your business respond faster, book more clients, and operate with less friction.",
+        service_1_title: "AI Chatbots",
+        service_1_text: "Answer questions instantly, qualify leads, and guide customers to the next step.",
+        service_2_title: "Lead Generation Systems",
+        service_2_text: "Capture inquiries from your website, forms, and social media into a simple workflow.",
+        service_3_title: "Booking Automation",
+        service_3_text: "Reduce missed appointments with automated booking flows and reminders.",
+        service_4_title: "Customer Support AI",
+        service_4_text: "Provide fast answers to common questions without hiring more support staff.",
+        service_5_title: "Follow-Up Automation",
+        service_5_text: "Keep leads warm with timed follow-ups, reminders, and simple re-engagement campaigns.",
+        service_6_title: "AI Business Audits",
+        service_6_text: "Find where your business is losing time, money, and customers, then fix it with automation.",
+        industries_title: "Best fit industries",
+        industries_text: "We focus on local businesses where speed, consistency, and better lead handling create immediate value.",
+        industry_1: "Beauty salons",
+        industry_2: "Barbershops",
+        industry_3: "Restaurants",
+        industry_4: "Auto services",
+        industry_5: "Real estate",
+        industry_6: "Dental clinics",
+        industry_7: "Moving companies",
+        industry_8: "Service businesses",
+        process_title: "How it works",
+        process_text: "A simple process focused on speed, clarity, and measurable business impact.",
+        step_1_title: "Audit",
+        step_1_text: "We identify where your business is losing leads, time, and opportunities.",
+        step_2_title: "Design",
+        step_2_text: "We propose a practical AI workflow tailored to your specific business needs.",
+        step_3_title: "Build",
+        step_3_text: "We set up the automation, messaging, booking, or support system.",
+        step_4_title: "Optimize",
+        step_4_text: "We refine performance and help you get more value from the system over time.",
+        pricing_title: "Simple packages",
+        pricing_text: "Start with a focused setup, then expand as your business grows.",
+        starter_title: "Starter",
+        starter_text: "For small businesses that want basic AI support and fast replies.",
+        starter_1: "AI chatbot setup",
+        starter_2: "FAQ automation",
+        starter_3: "Basic lead capture",
+        starter_4: "1 revision round",
+        popular_tag: "Most Popular",
+        growth_title: "Growth",
+        growth_text: "For businesses that want better lead flow, follow-up, and booking automation.",
+        growth_1: "Everything in Starter",
+        growth_2: "Booking workflow",
+        growth_3: "Automated reminders",
+        growth_4: "Lead qualification",
+        growth_5: "Follow-up flow",
+        premium_title: "Premium",
+        premium_text: "For owners who want a custom AI system that saves time and supports growth.",
+        premium_1: "Custom AI workflow",
+        premium_2: "CRM connection",
+        premium_3: "Advanced automation",
+        premium_4: "Priority support",
+        premium_5: "Optimization session",
+        cta_title: "Get a free AI audit for your business",
+        cta_text: "We will show you where your business can save time, reduce missed opportunities, and improve customer response with practical AI systems.",
+        cta_btn_1: "Request Audit",
+        cta_btn_2: "Email Us",
+        contact_title: "Contact",
+        contact_text: "Ready to make your business faster, more responsive, and easier to run?",
+        form_name: "Your name",
+        form_name_ph: "Your name",
+        form_email: "Your email",
+        form_email_ph: "you@example.com",
+        form_business: "Business type",
+        opt_1: "Salon / Barber",
+        opt_2: "Restaurant / Cafe",
+        opt_3: "Auto service",
+        opt_4: "Real estate",
+        opt_5: "Clinic / Dental",
+        opt_6: "Other",
+        form_message: "What do you need help with?",
+        form_message_ph: "Tell us what you want to automate or improve.",
+        form_submit: "Send request",
+        form_note: "This form opens your default email app. You can also contact us directly by email or WhatsApp.",
+        contact_card_1_title: "Email",
+        contact_card_2_title: "Location",
+        contact_card_2_text: "Prague, Czech Republic",
+        contact_card_3_title: "Fast contact",
+        contact_card_3_text: "Use WhatsApp for a quick conversation and a free audit request.",
+        contact_card_3_btn: "Open WhatsApp",
+        mini_1_title: "Response",
+        mini_1_text: "We focus on fast answers and practical business solutions.",
+        mini_2_title: "Goal",
+        mini_2_text: "More leads, less manual work, and better follow-up.",
+        mini_3_title: "Offer",
+        mini_3_text: "Free AI audit for local businesses in Prague.",
+        footer_1: "© 2026 Prague AI Growth. All rights reserved.",
+        trustbar_title: "Built for speed, conversion, and real business use",
+        trustbar_1: "Prague-focused",
+        trustbar_2: "Fast implementation",
+        trustbar_3: "Revenue-first systems",
+        stat_1: "Lead response coverage",
+        stat_2: "Faster customer handling",
+        stat_3: "More time for owners",
+        stat_4: "Better follow-up and qualification",
+        why_title: "Why businesses choose us",
+        why_text: "Because most owners do not need more software. They need a system that actually saves time and creates more sales.",
+        why_1_title: "Practical AI",
+        why_1_text: "We focus on workflows that improve response time, lead handling, and day-to-day operations.",
+        why_2_title: "Built for local business",
+        why_2_text: "Our systems are designed for service businesses, local brands, and owners who need results quickly.",
+        why_3_title: "Simple and scalable",
+        why_3_text: "Start with one automation, then expand into a smarter growth system over time.",
+        results_title: "What this can look like in practice",
+        results_text: "Examples of the kind of improvements a strong AI workflow can create for local businesses.",
+        result_1_title: "Salon",
+        result_1_text: "Faster replies, fewer missed messages, more booked appointments from Instagram and web inquiries.",
+        result_2_title: "Restaurant",
+        result_2_text: "Automatic answers for bookings, opening hours, and frequent questions even outside working hours.",
+        result_3_title: "Auto Service",
+        result_3_text: "Better lead collection, structured customer requests, and stronger follow-up after initial contact.",
+        founder_title: "Built by a founder who thinks in systems",
+        founder_text: "Prague AI Growth is focused on one goal: helping local businesses use AI in a practical, profitable, and understandable way.",
+        founder_badge: "Founder-led agency",
+        founder_card_title: "Strategy, automation, and execution in one place",
+        founder_card_text: "You work directly with someone who understands digital products, workflow design, and how to turn AI into a real business advantage.",
+        faq_title: "Common questions",
+        faq_text: "Clear answers for owners who want results, not complexity.",
+        faq_1_title: "Do I need technical knowledge?",
+        faq_1_text: "No. We build and explain the system in a simple way so you can use it without technical stress.",
+        faq_2_title: "Can I start small?",
+        faq_2_text: "Yes. Many businesses start with one chatbot, one lead form, or one booking flow and expand later.",
+        faq_3_title: "Is this only for big companies?",
+        faq_3_text: "No. It is often most valuable for smaller businesses where time and missed leads matter the most.",
+        footer_2: "AI systems for local business growth."
+      },
+      sr: {
+        nav_services: "Usluge",
+        nav_process: "Proces",
+        nav_pricing: "Cene",
+        nav_contact: "Kontakt",
+        nav_cta: "Besplatna AI analiza",
+        eyebrow: "AI sistemi za lokalne firme u Pragu",
+        hero_title: "Više klijenata. Manje haosa. Pametnije poslovanje uz AI.",
+        hero_text: "Pomažemo firmama u Pragu da automatizuju komunikaciju sa klijentima, prikupe više leadova, smanje propuštene prilike i uštede sate svake nedelje uz praktične AI sisteme.",
+        hero_btn_1: "Zatraži besplatnu analizu",
+        hero_btn_2: "Pogledaj pakete",
+        proof_1: "AI odgovori 24/7",
+        proof_2: "Automatsko prikupljanje leadova",
+        proof_3: "Zakazivanje i follow-up sistemi",
+        hero_card_title: "Šta pravimo",
+        hero_card_tag: "Premium lokalni AI sistemi",
+        hero_card_text: "Jednostavni AI sistemi fokusirani na prihod za salone, restorane, nekretnine, uslužne firme i lokalne brendove.",
+        metric_1: "Brzi odgovori na upite i poruke potencijalnih klijenata",
+        metric_2: "Brži odgovori bez dodatnog zapošljavanja",
+        metric_3: "Automatsko hvatanje i kvalifikacija leadova",
+        metric_4: "Vlasnici troše manje vremena na repetitivne zadatke",
+        services_title: "Usluge koje rešavaju stvarne poslovne probleme",
+        services_text: "Ne prodajemo AI radi AI-ja. Gradimo sisteme koji vašem biznisu pomažu da brže odgovara, dobije više klijenata i radi sa manje haosa.",
+        service_1_title: "AI čet botovi",
+        service_1_text: "Odgovaraju odmah, kvalifikuju leadove i vode klijenta ka sledećem koraku.",
+        service_2_title: "Sistemi za generisanje leadova",
+        service_2_text: "Prikupljaju upite sa sajta, formi i društvenih mreža u jasan tok rada.",
+        service_3_title: "Automatizacija zakazivanja",
+        service_3_text: "Smanjuje propuštene termine kroz automatsko zakazivanje i podsetnike.",
+        service_4_title: "AI korisnička podrška",
+        service_4_text: "Daje brze odgovore na česta pitanja bez dodatnog osoblja.",
+        service_5_title: "Automatski follow-up",
+        service_5_text: "Održava leadove toplim kroz praćenje, podsetnike i ponovno aktiviranje.",
+        service_6_title: "AI poslovne analize",
+        service_6_text: "Otkriva gde firma gubi vreme, novac i klijente, pa to popravlja automatizacijom.",
+        industries_title: "Idealne industrije",
+        industries_text: "Fokus je na lokalnim firmama gde brzina, doslednost i bolja obrada leadova odmah donose rezultat.",
+        industry_1: "Saloni lepote",
+        industry_2: "Barber shop",
+        industry_3: "Restorani",
+        industry_4: "Autoservisi",
+        industry_5: "Nekretnine",
+        industry_6: "Dentalne ordinacije",
+        industry_7: "Selidbe",
+        industry_8: "Uslužne firme",
+        process_title: "Kako radimo",
+        process_text: "Jednostavan proces fokusiran na brzinu, jasnoću i merljiv poslovni efekat.",
+        step_1_title: "Analiza",
+        step_1_text: "Otkrivamo gde vaš biznis gubi leadove, vreme i prilike.",
+        step_2_title: "Dizajn",
+        step_2_text: "Predlažemo praktičan AI tok rada prilagođen vašem poslovanju.",
+        step_3_title: "Izrada",
+        step_3_text: "Postavljamo automatizaciju, poruke, zakazivanje ili sistem podrške.",
+        step_4_title: "Optimizacija",
+        step_4_text: "Dorađujemo performanse i izvlačimo više vrednosti iz sistema.",
+        pricing_title: "Jednostavni paketi",
+        pricing_text: "Počni sa fokusiranim setupom, a zatim širi sistem kako posao raste.",
+        starter_title: "Starter",
+        starter_text: "Za male firme koje žele osnovnu AI podršku i brze odgovore.",
+        starter_1: "Podešavanje AI chatbota",
+        starter_2: "Automatizacija čestih pitanja",
+        starter_3: "Osnovno prikupljanje leadova",
+        starter_4: "1 krug izmena",
+        popular_tag: "Najtraženije",
+        growth_title: "Growth",
+        growth_text: "Za firme koje žele bolji tok leadova, follow-up i automatizaciju zakazivanja.",
+        growth_1: "Sve iz Starter paketa",
+        growth_2: "Workflow za zakazivanje",
+        growth_3: "Automatski podsetnici",
+        growth_4: "Kvalifikacija leadova",
+        growth_5: "Follow-up tok",
+        premium_title: "Premium",
+        premium_text: "Za vlasnike koji žele prilagođen AI sistem koji štedi vreme i podržava rast.",
+        premium_1: "Prilagođen AI workflow",
+        premium_2: "Povezivanje sa CRM-om",
+        premium_3: "Napredna automatizacija",
+        premium_4: "Prioritetna podrška",
+        premium_5: "Optimizaciona sesija",
+        cta_title: "Dobij besplatnu AI analizu za svoj biznis",
+        cta_text: "Pokazaćemo ti gde tvoj biznis može da uštedi vreme, smanji propuštene prilike i poboljša odgovor klijentima uz praktične AI sisteme.",
+        cta_btn_1: "Zatraži analizu",
+        cta_btn_2: "Pošalji email",
+        contact_title: "Kontakt",
+        contact_text: "Spreman da tvoj biznis bude brži, organizovaniji i lakši za vođenje?",
+        form_name: "Ime i prezime",
+        form_name_ph: "Vaše ime",
+        form_email: "Vaš email",
+        form_email_ph: "vi@primer.com",
+        form_business: "Tip biznisa",
+        opt_1: "Salon / Barber",
+        opt_2: "Restoran / Kafić",
+        opt_3: "Autoservis",
+        opt_4: "Nekretnine",
+        opt_5: "Klinika / Zubar",
+        opt_6: "Drugo",
+        form_message: "U čemu vam je potrebna pomoć?",
+        form_message_ph: "Napišite šta želite da automatizujete ili unapredite.",
+        form_submit: "Pošalji upit",
+        form_note: "Ova forma otvara vašu podrazumevanu email aplikaciju. Možete nas kontaktirati i direktno preko emaila ili WhatsApp-a.",
+        contact_card_1_title: "Email",
+        contact_card_2_title: "Lokacija",
+        contact_card_2_text: "Prag, Češka",
+        contact_card_3_title: "Brzi kontakt",
+        contact_card_3_text: "Koristite WhatsApp za brz razgovor i besplatnu AI analizu.",
+        contact_card_3_btn: "Otvori WhatsApp",
+        mini_1_title: "Odgovor",
+        mini_1_text: "Fokus je na brzim odgovorima i praktičnim poslovnim rešenjima.",
+        mini_2_title: "Cilj",
+        mini_2_text: "Više leadova, manje ručnog rada i bolji follow-up.",
+        mini_3_title: "Ponuda",
+        mini_3_text: "Besplatna AI analiza za lokalne firme u Pragu.",
+        footer_1: "© 2026 Prague AI Growth. Sva prava zadržana.",
+        trustbar_title: "Napravljeno za brzinu, konverziju i realnu upotrebu u biznisu",
+        trustbar_1: "Fokus na Prag",
+        trustbar_2: "Brza implementacija",
+        trustbar_3: "Sistemi fokusirani na prihod",
+        stat_1: "Pokrivenost odgovora na leadove",
+        stat_2: "Brža obrada klijenata",
+        stat_3: "Više vremena za vlasnika",
+        stat_4: "Bolji follow-up i kvalifikacija",
+        why_title: "Zašto firme biraju nas",
+        why_text: "Zato što većini vlasnika ne treba još jedan softver. Treba im sistem koji stvarno štedi vreme i donosi više prodaje.",
+        why_1_title: "Praktičan AI",
+        why_1_text: "Fokus je na workflow-ima koji popravljaju brzinu odgovora, obradu leadova i svakodnevni rad.",
+        why_2_title: "Pravljeno za lokalni biznis",
+        why_2_text: "Naši sistemi su osmišljeni za uslužne firme, lokalne brendove i vlasnike kojima trebaju brzi rezultati.",
+        why_3_title: "Jednostavno i skalabilno",
+        why_3_text: "Počni sa jednom automatizacijom, pa vremenom pređi na pametniji sistem rasta.",
+        results_title: "Kako to može da izgleda u praksi",
+        results_text: "Primeri poboljšanja koje dobar AI workflow može da donese lokalnim firmama.",
+        result_1_title: "Salon",
+        result_1_text: "Brži odgovori, manje propuštenih poruka i više zakazanih termina sa Instagrama i sajta.",
+        result_2_title: "Restoran",
+        result_2_text: "Automatski odgovori za rezervacije, radno vreme i česta pitanja čak i van radnog vremena.",
+        result_3_title: "Autoservis",
+        result_3_text: "Bolje prikupljanje leadova, strukturisani zahtevi klijenata i jači follow-up posle prvog kontakta.",
+        founder_title: "Napravio osnivač koji razmišlja kroz sisteme",
+        founder_text: "Prague AI Growth ima jedan cilj: da lokalnim firmama pomogne da koriste AI na praktičan, profitabilan i razumljiv način.",
+        founder_badge: "Founder-led agencija",
+        founder_card_title: "Strategija, automatizacija i realizacija na jednom mestu",
+        founder_card_text: "Radiš direktno sa osobom koja razume digitalne proizvode, dizajn workflow-a i kako da AI pretvori u stvarnu poslovnu prednost.",
+        faq_title: "Česta pitanja",
+        faq_text: "Jasni odgovori za vlasnike koji žele rezultat, a ne komplikaciju.",
+        faq_1_title: "Da li mi treba tehničko znanje?",
+        faq_1_text: "Ne. Sistem pravimo i objašnjavamo jednostavno, tako da ga koristiš bez tehničkog stresa.",
+        faq_2_title: "Mogu li da krenem malo?",
+        faq_2_text: "Da. Mnoge firme počinju sa jednim chatbotom, jednom lead formom ili jednim booking tokom i kasnije šire sistem.",
+        faq_3_title: "Da li je ovo samo za velike firme?",
+        faq_3_text: "Ne. Često je najvrednije za manje firme gde vreme i propušteni leadovi najviše znače.",
+        footer_2: "AI sistemi za rast lokalnog biznisa."
+      },
+      cz: {
+        nav_services: "Služby",
+        nav_process: "Proces",
+        nav_pricing: "Ceník",
+        nav_contact: "Kontakt",
+        nav_cta: "AI audit zdarma",
+        eyebrow: "AI systémy pro lokální firmy v Praze",
+        hero_title: "Více zákazníků. Méně chaosu. Chytřejší provoz díky AI.",
+        hero_text: "Pomáháme firmám v Praze automatizovat komunikaci se zákazníky, získávat více leadů, snižovat ztracené příležitosti a šetřit hodiny každý týden pomocí praktických AI systémů.",
+        hero_btn_1: "Získat audit zdarma",
+        hero_btn_2: "Zobrazit balíčky",
+        proof_1: "AI odpovědi 24/7",
+        proof_2: "Automatický sběr leadů",
+        proof_3: "Rezervace a follow-up systémy",
+        hero_card_title: "Co vytváříme",
+        hero_card_tag: "Prémiové lokální AI systémy",
+        hero_card_text: "Jednoduché AI systémy zaměřené na růst tržeb pro salony, restaurace, reality, servisní firmy a lokální značky.",
+        metric_1: "Okamžité odpovědi na leady a dotazy zákazníků",
+        metric_2: "Rychlejší reakce bez dalšího náboru",
+        metric_3: "Automatické zachycení a kvalifikace leadů",
+        metric_4: "Majitelé tráví méně času opakujícími se úkoly",
+        services_title: "Služby, které řeší skutečné obchodní problémy",
+        services_text: "Neprodáváme AI jen kvůli AI. Budujeme systémy, které firmám pomáhají reagovat rychleji, získat více klientů a fungovat s menším chaosem.",
+        service_1_title: "AI chatboti",
+        service_1_text: "Okamžitě odpovídají, kvalifikují leady a vedou zákazníka k dalšímu kroku.",
+        service_2_title: "Systémy pro získávání leadů",
+        service_2_text: "Sbírají poptávky z webu, formulářů a sociálních sítí do jednoduchého workflow.",
+        service_3_title: "Automatizace rezervací",
+        service_3_text: "Snižuje počet zmeškaných termínů pomocí rezervací a připomínek.",
+        service_4_title: "AI zákaznická podpora",
+        service_4_text: "Rychlé odpovědi na časté dotazy bez potřeby další podpory.",
+        service_5_title: "Automatický follow-up",
+        service_5_text: "Udržuje leady aktivní pomocí follow-upů, připomínek a reaktivace.",
+        service_6_title: "AI business audit",
+        service_6_text: "Najde místa, kde firma ztrácí čas, peníze a zákazníky, a opraví je automatizací.",
+        industries_title: "Nejvhodnější obory",
+        industries_text: "Zaměřujeme se na lokální firmy, kde rychlost, konzistence a lepší práce s leady přinášejí okamžitou hodnotu.",
+        industry_1: "Kosmetické salony",
+        industry_2: "Barbershopy",
+        industry_3: "Restaurace",
+        industry_4: "Autoservisy",
+        industry_5: "Reality",
+        industry_6: "Zubní kliniky",
+        industry_7: "Stěhovací firmy",
+        industry_8: "Servisní firmy",
+        process_title: "Jak to funguje",
+        process_text: "Jednoduchý proces zaměřený na rychlost, jasnost a měřitelný dopad na byznys.",
+        step_1_title: "Audit",
+        step_1_text: "Zjistíme, kde váš byznys ztrácí leady, čas a příležitosti.",
+        step_2_title: "Návrh",
+        step_2_text: "Navrhneme praktický AI workflow přesně pro vaše podnikání.",
+        step_3_title: "Realizace",
+        step_3_text: "Nastavíme automatizaci, zprávy, rezervace nebo systém podpory.",
+        step_4_title: "Optimalizace",
+        step_4_text: "Vyladíme výkon a pomůžeme vám ze systému získat více hodnoty.",
+        pricing_title: "Jednoduché balíčky",
+        pricing_text: "Začněte s cíleným setupem a postupně systém rozšiřujte podle růstu firmy.",
+        starter_title: "Starter",
+        starter_text: "Pro malé firmy, které chtějí základní AI podporu a rychlé odpovědi.",
+        starter_1: "Nastavení AI chatbota",
+        starter_2: "Automatizace FAQ",
+        starter_3: "Základní sběr leadů",
+        starter_4: "1 kolo úprav",
+        popular_tag: "Nejoblíbenější",
+        growth_title: "Growth",
+        growth_text: "Pro firmy, které chtějí lepší práci s leady, follow-up a automatizaci rezervací.",
+        growth_1: "Vše ze Starteru",
+        growth_2: "Workflow rezervací",
+        growth_3: "Automatické připomínky",
+        growth_4: "Kvalifikace leadů",
+        growth_5: "Follow-up workflow",
+        premium_title: "Premium",
+        premium_text: "Pro majitele, kteří chtějí vlastní AI systém šetřící čas a podporující růst.",
+        premium_1: "Vlastní AI workflow",
+        premium_2: "Napojení na CRM",
+        premium_3: "Pokročilá automatizace",
+        premium_4: "Prioritní podpora",
+        premium_5: "Optimalizační konzultace",
+        cta_title: "Získejte AI audit zdarma pro svůj byznys",
+        cta_text: "Ukážeme vám, kde může váš byznys ušetřit čas, omezit ztracené příležitosti a zlepšit komunikaci se zákazníky pomocí praktických AI systémů.",
+        cta_btn_1: "Požádat o audit",
+        cta_btn_2: "Napsat email",
+        contact_title: "Kontakt",
+        contact_text: "Chcete, aby byl váš byznys rychlejší, přehlednější a jednodušší na řízení?",
+        form_name: "Vaše jméno",
+        form_name_ph: "Vaše jméno",
+        form_email: "Váš email",
+        form_email_ph: "vy@priklad.cz",
+        form_business: "Typ podnikání",
+        opt_1: "Salon / Barber",
+        opt_2: "Restaurace / Kavárna",
+        opt_3: "Autoservis",
+        opt_4: "Reality",
+        opt_5: "Klinika / Zubař",
+        opt_6: "Jiné",
+        form_message: "S čím potřebujete pomoci?",
+        form_message_ph: "Napište, co chcete automatizovat nebo zlepšit.",
+        form_submit: "Odeslat poptávku",
+        form_note: "Tento formulář otevře vaši výchozí emailovou aplikaci. Můžete nás kontaktovat i přímo emailem nebo přes WhatsApp.",
+        contact_card_1_title: "Email",
+        contact_card_2_title: "Lokalita",
+        contact_card_2_text: "Praha, Česká republika",
+        contact_card_3_title: "Rychlý kontakt",
+        contact_card_3_text: "Použijte WhatsApp pro rychlou konverzaci a žádost o AI audit zdarma.",
+        contact_card_3_btn: "Otevřít WhatsApp",
+        mini_1_title: "Reakce",
+        mini_1_text: "Zaměřujeme se na rychlé odpovědi a praktická obchodní řešení.",
+        mini_2_title: "Cíl",
+        mini_2_text: "Více leadů, méně ruční práce a lepší follow-up.",
+        mini_3_title: "Nabídka",
+        mini_3_text: "AI audit zdarma pro lokální firmy v Praze.",
+        footer_1: "© 2026 Prague AI Growth. Všechna práva vyhrazena.",
+        trustbar_title: "Vytvořeno pro rychlost, konverze a skutečné obchodní použití",
+        trustbar_1: "Zaměřeno na Prahu",
+        trustbar_2: "Rychlá implementace",
+        trustbar_3: "Systémy zaměřené na tržby",
+        stat_1: "Pokrytí odpovědí na leady",
+        stat_2: "Rychlejší obsluha zákazníků",
+        stat_3: "Více času pro majitele",
+        stat_4: "Lepší follow-up a kvalifikace",
+        why_title: "Proč si firmy vybírají nás",
+        why_text: "Protože většina majitelů nepotřebuje další software. Potřebují systém, který skutečně šetří čas a přináší více prodejů.",
+        why_1_title: "Praktická AI",
+        why_1_text: "Zaměřujeme se na workflow, která zlepšují rychlost reakcí, práci s leady a každodenní provoz.",
+        why_2_title: "Navrženo pro lokální byznys",
+        why_2_text: "Naše systémy jsou určené pro servisní firmy, lokální značky a majitele, kteří potřebují rychlé výsledky.",
+        why_3_title: "Jednoduché a škálovatelné",
+        why_3_text: "Začněte jednou automatizací a postupně přejděte na chytřejší růstový systém.",
+        results_title: "Jak to může vypadat v praxi",
+        results_text: "Příklady zlepšení, která může kvalitní AI workflow přinést lokálním firmám.",
+        result_1_title: "Salon",
+        result_1_text: "Rychlejší odpovědi, méně zmeškaných zpráv a více rezervací z Instagramu a webu.",
+        result_2_title: "Restaurace",
+        result_2_text: "Automatické odpovědi na rezervace, otevírací dobu a časté dotazy i mimo pracovní dobu.",
+        result_3_title: "Autoservis",
+        result_3_text: "Lepší sběr leadů, strukturované požadavky zákazníků a silnější follow-up po prvním kontaktu.",
+        founder_title: "Vytvořeno zakladatelem, který přemýšlí v systémech",
+        founder_text: "Prague AI Growth má jediný cíl: pomáhat lokálním firmám používat AI prakticky, výnosně a srozumitelně.",
+        founder_badge: "Founder-led agentura",
+        founder_card_title: "Strategie, automatizace a realizace na jednom místě",
+        founder_card_text: "Spolupracujete přímo s člověkem, který rozumí digitálním produktům, návrhu workflow a tomu, jak proměnit AI ve skutečnou obchodní výhodu.",
+        faq_title: "Časté otázky",
+        faq_text: "Jasné odpovědi pro majitele, kteří chtějí výsledky, ne složitost.",
+        faq_1_title: "Potřebuji technické znalosti?",
+        faq_1_text: "Ne. Systém vytvoříme a vysvětlíme jednoduše, abyste ho mohli používat bez technického stresu.",
+        faq_2_title: "Mohu začít v malém?",
+        faq_2_text: "Ano. Mnoho firem začíná jedním chatbotem, jedním lead formulářem nebo jedním rezervačním flow a později rozšiřuje systém.",
+        faq_3_title: "Je to jen pro velké firmy?",
+        faq_3_text: "Ne. Často je to nejcennější právě pro menší firmy, kde čas a ztracené leady hrají největší roli.",
+        footer_2: "AI systémy pro růst lokálního podnikání."
+      }
+    };
+
+
+    const demoTranslations = {
+      en: {
+        demo_title: "Live demo products for your best niches",
+        demo_text: "Interactive product demos for auto services, restaurants, and security agencies. Click and test them like real mini apps.",
+        demo_auto_text: "Booking, price estimate, and customer reply system for auto services.",
+        demo_auto_head: "AI booking assistant",
+        demo_status_online: "Online",
+        demo_auto_b1: "Hi, I need a tire change tomorrow.",
+        demo_auto_b2: "We have free slots at 09:00, 11:30, and 15:00. Which one works for you?",
+        demo_auto_b3: "11:30. Price for BMW 3?",
+        demo_auto_b4: "Estimated price is 900–1200 CZK. Booking reserved for 11:30.",
+        demo_auto_stat1: "Less phone calls", demo_auto_stat2: "Bookings captured",
+        demo_auto_f1: "Online service booking", demo_auto_f2: "AI pricing and time answers", demo_auto_f3: "Reminders and status updates",
+        demo_open_auto: "Test AutoFlow Demo",
+        demo_table_text: "Reservations, reminders, and guest replies for restaurants and cafes.",
+        demo_table_head: "Reservation AI", demo_status_open23: "Open until 23:00",
+        demo_table_b1: "Table for 2 tonight?", demo_table_b2: "Yes, available at 19:30 or 21:00.", demo_table_b3: "19:30 near the window.", demo_table_b4: "Confirmed. Reminder will be sent automatically.",
+        demo_table_stat1: "No-shows reduced", demo_table_stat2: "Reservations",
+        demo_table_f1: "Website and WhatsApp bookings", demo_table_f2: "Automatic guest reminders", demo_table_f3: "Menu and FAQ replies 24/7",
+        demo_open_table: "Test TableFlow Demo",
+        demo_shift_text: "Smart scheduling and open-shift handling for security agencies.",
+        demo_shift_head: "Smart shift planner", demo_status_open_shift: "1 open shift",
+        demo_shift_b1: "Saturday day shift is still open.", demo_shift_b2: "Alert sent to available guards nearby.", demo_shift_b3: "I can take it.", demo_shift_b4: "Shift assigned and payroll updated.",
+        demo_shift_stat1: "Admin time saved", demo_shift_stat2: "Open shifts filled", demo_fast: "Faster",
+        demo_shift_f1: "Shift planning and replacements", demo_shift_f2: "Open-shift AI dispatcher", demo_shift_f3: "Attendance and payroll export",
+        demo_open_shift: "Test ShiftGuard Demo",
+        demo_badge_auto: "Auto services", demo_badge_table: "Restaurants", demo_badge_shift: "Security agencies",
+        demo_auto_modal_desc: "Interactive booking, pricing, and customer communication flow for auto services.",
+        demo_table_modal_desc: "Interactive reservation and reminder flow for restaurants and cafes.",
+        demo_shift_modal_desc: "Interactive scheduling flow for security agencies and shift-based companies.",
+        demo_close: "Close", demo_book_btn: "Book This Demo", demo_contact_btn: "Contact Sales",
+        demo_auto_form_title: "Interactive booking", demo_table_form_title: "Interactive reservation", demo_shift_form_title: "Interactive shift planner", demo_output_title: "Live AI output",
+        demo_label_service: "Service", demo_label_vehicle: "Vehicle", demo_label_day: "Day", demo_label_slot: "Time slot",
+        demo_label_guests: "Guests", demo_label_time: "Time", demo_label_area: "Seating preference", demo_label_occasion: "Occasion",
+        demo_label_site: "Site", demo_label_shift_type: "Shift type", demo_label_workers: "Guards needed", demo_label_coverage: "Coverage source"
+      },
+      sr: {
+        demo_title: "Live demo proizvodi za tvoje najjače niše",
+        demo_text: "Interaktivni demo proizvodi za autoservise, restorane i security agencije. Klikni i testiraj ih kao prave mini aplikacije.",
+        demo_auto_text: "Sistem za zakazivanje, procenu cene i odgovore kupcima za autoservise.",
+        demo_auto_head: "AI booking asistent",
+        demo_status_online: "Online",
+        demo_auto_b1: "Zdravo, treba mi zamena guma sutra.",
+        demo_auto_b2: "Imamo slobodne termine u 09:00, 11:30 i 15:00. Koji ti odgovara?",
+        demo_auto_b3: "11:30. Kolika je cena za BMW 3?",
+        demo_auto_b4: "Procenjena cena je 10.500–14.000 RSD. Termin je rezervisan za 11:30.",
+        demo_auto_stat1: "Manje telefonskih poziva", demo_auto_stat2: "Zakazivanja uhvaćena",
+        demo_auto_f1: "Online zakazivanje servisa", demo_auto_f2: "AI odgovori za cenu i termin", demo_auto_f3: "Podsetnici i status vozila",
+        demo_open_auto: "Testiraj AutoFlow Demo",
+        demo_table_text: "Rezervacije, podsetnici i odgovori gostima za restorane i kafiće.",
+        demo_table_head: "AI rezervacije", demo_status_open23: "Otvoreno do 23:00",
+        demo_table_b1: "Sto za 2 večeras?", demo_table_b2: "Da, slobodno je u 19:30 ili 21:00.", demo_table_b3: "19:30 pored prozora.", demo_table_b4: "Potvrđeno. Podsetnik će biti automatski poslat.",
+        demo_table_stat1: "Manje no-show gostiju", demo_table_stat2: "Rezervacije",
+        demo_table_f1: "Zakazivanje preko sajta i WhatsApp-a", demo_table_f2: "Automatski podsetnici gostima", demo_table_f3: "Meni i FAQ odgovori 24/7",
+        demo_open_table: "Testiraj TableFlow Demo",
+        demo_shift_text: "Pametno planiranje smena i rešavanje otvorenih smena za security agencije.",
+        demo_shift_head: "Pametni planer smena", demo_status_open_shift: "1 otvorena smena",
+        demo_shift_b1: "Subotnja dnevna smena je i dalje otvorena.", demo_shift_b2: "Alert je poslat dostupnim radnicima u blizini.", demo_shift_b3: "Mogu ja da preuzmem.", demo_shift_b4: "Smena je dodeljena i obračun ažuriran.",
+        demo_shift_stat1: "Ušteđeno admin vremena", demo_shift_stat2: "Otvorene smene popunjene", demo_fast: "Brže",
+        demo_shift_f1: "Planiranje smena i zamene", demo_shift_f2: "AI dispatcher za otvorene smene", demo_shift_f3: "Evidencija prisustva i export sati",
+        demo_open_shift: "Testiraj ShiftGuard Demo",
+        demo_badge_auto: "Autoservisi", demo_badge_table: "Restorani", demo_badge_shift: "Security agencije",
+        demo_auto_modal_desc: "Interaktivni tok za zakazivanje, cenu i komunikaciju sa kupcima za autoservise.",
+        demo_table_modal_desc: "Interaktivni tok rezervacija i podsetnika za restorane i kafiće.",
+        demo_shift_modal_desc: "Interaktivni planer smena za security agencije i firme sa smenama.",
+        demo_close: "Zatvori", demo_book_btn: "Zakaži Demo", demo_contact_btn: "Kontakt Prodaja",
+        demo_auto_form_title: "Interaktivno zakazivanje", demo_table_form_title: "Interaktivna rezervacija", demo_shift_form_title: "Interaktivni planer smena", demo_output_title: "Live AI output",
+        demo_label_service: "Usluga", demo_label_vehicle: "Vozilo", demo_label_day: "Dan", demo_label_slot: "Termin",
+        demo_label_guests: "Gosti", demo_label_time: "Vreme", demo_label_area: "Mesto sedenja", demo_label_occasion: "Povod",
+        demo_label_site: "Lokacija", demo_label_shift_type: "Tip smene", demo_label_workers: "Broj radnika", demo_label_coverage: "Način pokrivanja"
+      },
+      cz: {
+        demo_title: "Živé demo produkty pro vaše nejlepší niky",
+        demo_text: "Interaktivní demo produkty pro autoservisy, restaurace a bezpečnostní agentury. Klikněte a vyzkoušejte je jako skutečné mini aplikace.",
+        demo_auto_text: "Systém pro rezervace, odhad ceny a odpovědi zákazníkům pro autoservisy.",
+        demo_auto_head: "AI rezervační asistent",
+        demo_status_online: "Online",
+        demo_auto_b1: "Dobrý den, potřebuji zítra výměnu pneumatik.",
+        demo_auto_b2: "Máme volné termíny v 09:00, 11:30 a 15:00. Který vám vyhovuje?",
+        demo_auto_b3: "11:30. Jaká je cena pro BMW 3?",
+        demo_auto_b4: "Odhadovaná cena je 900–1200 CZK. Termín je rezervován na 11:30.",
+        demo_auto_stat1: "Méně telefonátů", demo_auto_stat2: "Zachycené rezervace",
+        demo_auto_f1: "Online rezervace servisu", demo_auto_f2: "AI odpovědi na cenu a termín", demo_auto_f3: "Připomínky a stav vozidla",
+        demo_open_auto: "Vyzkoušet AutoFlow Demo",
+        demo_table_text: "Rezervace, připomínky a odpovědi hostům pro restaurace a kavárny.",
+        demo_table_head: "AI rezervace", demo_status_open23: "Otevřeno do 23:00",
+        demo_table_b1: "Stůl pro 2 dnes večer?", demo_table_b2: "Ano, volno je v 19:30 nebo 21:00.", demo_table_b3: "19:30 u okna.", demo_table_b4: "Potvrzeno. Připomínka bude odeslána automaticky.",
+        demo_table_stat1: "Méně no-show", demo_table_stat2: "Rezervace",
+        demo_table_f1: "Rezervace přes web a WhatsApp", demo_table_f2: "Automatické připomínky hostům", demo_table_f3: "Menu a FAQ odpovědi 24/7",
+        demo_open_table: "Vyzkoušet TableFlow Demo",
+        demo_shift_text: "Chytré plánování směn a řešení otevřených směn pro bezpečnostní agentury.",
+        demo_shift_head: "Chytrý plánovač směn", demo_status_open_shift: "1 volná směna",
+        demo_shift_b1: "Sobotní denní směna je stále volná.", demo_shift_b2: "Upozornění bylo odesláno dostupným pracovníkům v okolí.", demo_shift_b3: "Mohu ji vzít.", demo_shift_b4: "Směna byla přiřazena a mzdy aktualizovány.",
+        demo_shift_stat1: "Ušetřený admin čas", demo_shift_stat2: "Obsazené otevřené směny", demo_fast: "Rychleji",
+        demo_shift_f1: "Plánování směn a náhrady", demo_shift_f2: "AI dispatcher pro otevřené směny", demo_shift_f3: "Docházka a export mezd",
+        demo_open_shift: "Vyzkoušet ShiftGuard Demo",
+        demo_badge_auto: "Autoservisy", demo_badge_table: "Restaurace", demo_badge_shift: "Bezpečnostní agentury",
+        demo_auto_modal_desc: "Interaktivní tok rezervací, ceny a komunikace se zákazníky pro autoservisy.",
+        demo_table_modal_desc: "Interaktivní tok rezervací a připomínek pro restaurace a kavárny.",
+        demo_shift_modal_desc: "Interaktivní plánovač směn pro bezpečnostní agentury a firmy se směnami.",
+        demo_close: "Zavřít", demo_book_btn: "Rezervovat Demo", demo_contact_btn: "Kontakt Prodej",
+        demo_auto_form_title: "Interaktivní rezervace", demo_table_form_title: "Interaktivní rezervace stolu", demo_shift_form_title: "Interaktivní plánovač směn", demo_output_title: "Živý AI výstup",
+        demo_label_service: "Služba", demo_label_vehicle: "Vozidlo", demo_label_day: "Den", demo_label_slot: "Termín",
+        demo_label_guests: "Hosté", demo_label_time: "Čas", demo_label_area: "Místo sezení", demo_label_occasion: "Příležitost",
+        demo_label_site: "Lokalita", demo_label_shift_type: "Typ směny", demo_label_workers: "Počet pracovníků", demo_label_coverage: "Způsob pokrytí"
+      }
+    };
+    Object.keys(demoTranslations).forEach(lang => Object.assign(translations[lang], demoTranslations[lang]));
+
+
+    function applyTranslations(lang) {
+      document.documentElement.lang = lang === 'cz' ? 'cs' : lang;
+      const dict = translations[lang] || translations.en;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key]) el.placeholder = dict[key];
+      });
+      const titleMap = {
+        en: 'Prague AI Growth | AI Systems for Prague Businesses',
+        sr: 'Prague AI Growth | AI sistemi za firme u Pragu',
+        cz: 'Prague AI Growth | AI systémy pro firmy v Praze'
+      };
+      const descMap = {
+        en: 'We help Prague businesses get more customers, save time, and automate operations with AI systems.',
+        sr: 'Pomažemo firmama u Pragu da dobiju više klijenata, uštede vreme i automatizuju poslovanje uz AI sisteme.',
+        cz: 'Pomáháme firmám v Praze získat více zákazníků, ušetřit čas a automatizovat provoz pomocí AI systémů.'
+      };
+      document.title = titleMap[lang] || titleMap.en;
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute('content', descMap[lang] || descMap.en);
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      localStorage.setItem('pag_lang', lang);
+      updateAllDemos(lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => applyTranslations(btn.dataset.lang));
+    });
+
+
+    function getAutoLocaleValues(lang) {
+      if (lang === 'sr') {
+        return {
+          services: { tire: 'Zamena guma', oil: 'Mali servis', diag: 'Dijagnostika' },
+          days: { tomorrow: 'Sutra', friday: 'Petak', saturday: 'Subota' },
+          prices: { tire: '10.500–14.000 RSD', oil: '17.500–28.000 RSD', diag: '8.000–12.000 RSD' },
+          vehicleDefault: 'BMW Serija 3',
+          replyPrefix: 'AI odgovor',
+          selected: 'Korisnik izabrao', vehicle: 'Vozilo', time: 'Traženi termin', at: 'u',
+          wa: 'Zdravo, zelim demo za AutoFlow AI'
+        };
+      }
+      if (lang === 'cz') {
+        return {
+          services: { tire: 'Výměna pneumatik', oil: 'Malý servis', diag: 'Diagnostika' },
+          days: { tomorrow: 'Zítra', friday: 'Pátek', saturday: 'Sobota' },
+          prices: { tire: '900–1200 CZK', oil: '1500–2400 CZK', diag: '700–1000 CZK' },
+          vehicleDefault: 'BMW 3 Series',
+          replyPrefix: 'AI odpověď',
+          selected: 'Vybraná služba', vehicle: 'Vozidlo', time: 'Požadovaný termín', at: 'v',
+          wa: 'Dobrý den, chci demo pro AutoFlow AI'
+        };
+      }
+      return {
+        services: { tire: 'Tire Change', oil: 'Oil Change', diag: 'Diagnostics' },
+        days: { tomorrow: 'Tomorrow', friday: 'Friday', saturday: 'Saturday' },
+        prices: { tire: '€36–€48', oil: '€60–€96', diag: '€28–€42' },
+        vehicleDefault: 'BMW 3 Series',
+        replyPrefix: 'AI reply',
+        selected: 'Customer selected', vehicle: 'Vehicle', time: 'Requested time', at: 'at',
+        wa: 'Hello, I want a demo for AutoFlow AI'
+      };
+    }
+    function getTableLocaleValues(lang) {
+      if (lang === 'sr') return { areas:{window:'pored prozora',terrace:'terasa',quiet:'mirni ugao'}, occasions:{dinner:'večera',birthday:'rođendan',meeting:'poslovni sastanak'}, reservation:'Rezervacija za', seating:'Mesto sedenja', occasion:'Povod', guestsWord:'gosta', confirmed:'AI odgovor: Tvoja rezervacija za', suffix:'je potvrđena za', saved:'Sačuvali smo želju:', wa:'Zdravo, zelim demo za TableFlow AI' };
+      if (lang === 'cz') return { areas:{window:'u okna',terrace:'terasa',quiet:'klidný kout'}, occasions:{dinner:'večeře',birthday:'narozeniny',meeting:'obchodní schůzka'}, reservation:'Rezervace pro', seating:'Preferované sezení', occasion:'Příležitost', guestsWord:'hosty', confirmed:'AI odpověď: Vaše rezervace pro', suffix:'je potvrzena na', saved:'Uložili jsme preferenci:', wa:'Dobrý den, chci demo pro TableFlow AI' };
+      return { areas:{window:'Window table',terrace:'Terrace',quiet:'Quiet corner'}, occasions:{dinner:'dinner',birthday:'birthday',meeting:'business meeting'}, reservation:'Reservation for', seating:'Preferred seating', occasion:'Occasion', guestsWord:'guests', confirmed:'AI reply: Your reservation for', suffix:'is confirmed at', saved:'We saved your preference:', wa:'Hello, I want a demo for TableFlow AI' };
+    }
+    function getShiftLocaleValues(lang) {
+      if (lang === 'sr') return { types:{night:'Noćna smena',day:'Dnevna smena',evening:'Večernja smena'}, cover:{nearby:'dostupan radnik u blizini',broadcast:'broadcast otvorene smene',backup:'backup tim'}, site:'Lokacija', shift:'Smena', workers:'Potreban broj radnika', assigned:'AI dispatcher:', assigned2:'radnika je dodeljeno za', at:'na lokaciji', method:'Metod pokrivanja:', times:{night:'19:00–07:00',day:'07:00–19:00',evening:'12:00–20:00'}, wa:'Zdravo, zelim demo za ShiftGuard AI' };
+      if (lang === 'cz') return { types:{night:'Noční směna',day:'Denní směna',evening:'Večerní směna'}, cover:{nearby:'dostupný pracovník poblíž',broadcast:'broadcast volné směny',backup:'záložní tým'}, site:'Lokalita', shift:'Směna', workers:'Požadovaný počet pracovníků', assigned:'AI dispatcher:', assigned2:'pracovník(ů) bylo přiřazeno pro', at:'na lokaci', method:'Metoda pokrytí:', times:{night:'19:00–07:00',day:'07:00–19:00',evening:'12:00–20:00'}, wa:'Dobrý den, chci demo pro ShiftGuard AI' };
+      return { types:{night:'Night Shift',day:'Day Shift',evening:'Evening Shift'}, cover:{nearby:'available guard nearby',broadcast:'broadcast open shift alert',backup:'backup team'}, site:'Site', shift:'Shift', workers:'Required guards', assigned:'AI dispatcher:', assigned2:'guard(s) assigned for', at:'at', method:'Coverage method:', times:{night:'19:00–07:00',day:'07:00–19:00',evening:'12:00–20:00'}, wa:'Hello, I want a demo for ShiftGuard AI' };
+    }
+    function updateAutoDemo(lang) {
+      const loc = getAutoLocaleValues(lang);
+      const service = document.getElementById('auto-service').value;
+      const day = document.getElementById('auto-day').value;
+      const slot = document.getElementById('auto-slot').value;
+      const vehicle = document.getElementById('auto-vehicle').value || loc.vehicleDefault;
+      const serviceLabel = loc.services[service];
+      const dayLabel = loc.days[day];
+      const price = loc.prices[service];
+      document.getElementById('auto-out-1').textContent = `${loc.selected}: ${serviceLabel}`;
+      document.getElementById('auto-out-2').textContent = `${loc.vehicle}: ${vehicle}`;
+      document.getElementById('auto-out-3').textContent = `${loc.time}: ${dayLabel} ${loc.at} ${slot}`;
+      document.getElementById('auto-out-4').textContent = `${loc.replyPrefix}: ${serviceLabel.toLowerCase()} for ${vehicle} ${lang==='sr'?'je rezervisan za':lang==='cz'?'je rezervována na':'is reserved for'} ${dayLabel} ${loc.at} ${slot}. ${lang==='sr'?'Procenjena cena':lang==='cz'?'Odhadovaná cena':'Estimated price'}: ${price}.`;
+      document.getElementById('auto-wa').href = `https://wa.me/420722080268?text=${encodeURIComponent(loc.wa)}`;
+    }
+    function updateTableDemo(lang) {
+      const loc = getTableLocaleValues(lang);
+      const guests = document.getElementById('table-guests').value;
+      const time = document.getElementById('table-time').value;
+      const area = loc.areas[document.getElementById('table-area').value];
+      const occasion = loc.occasions[document.getElementById('table-occasion').value];
+      document.getElementById('table-out-1').textContent = `${loc.reservation} ${guests} ${loc.guestsWord}`;
+      document.getElementById('table-out-2').textContent = `${loc.seating}: ${area}`;
+      document.getElementById('table-out-3').textContent = `${loc.occasion}: ${occasion}`;
+      document.getElementById('table-out-4').textContent = `${loc.confirmed} ${guests} ${loc.guestsWord} ${loc.suffix} ${time}. ${loc.saved} ${area}.`;
+      document.getElementById('table-wa').href = `https://wa.me/420722080268?text=${encodeURIComponent(loc.wa)}`;
+    }
+    function updateShiftDemo(lang) {
+      const loc = getShiftLocaleValues(lang);
+      const site = document.getElementById('shift-site').value || 'Client site';
+      const type = document.getElementById('shift-type').value;
+      const workers = document.getElementById('shift-workers').value;
+      const coverage = loc.cover[document.getElementById('shift-coverage').value];
+      const typeLabel = loc.types[type];
+      document.getElementById('shift-out-1').textContent = `${loc.site}: ${site}`;
+      document.getElementById('shift-out-2').textContent = `${loc.shift}: ${typeLabel} • ${loc.times[type]}`;
+      document.getElementById('shift-out-3').textContent = `${loc.workers}: ${workers}`;
+      document.getElementById('shift-out-4').textContent = `${loc.assigned} ${workers} ${loc.assigned2} ${typeLabel.toLowerCase()} ${loc.at} ${site}. ${loc.method} ${coverage}.`;
+      document.getElementById('shift-wa').href = `https://wa.me/420722080268?text=${encodeURIComponent(loc.wa)}`;
+    }
+    function updateAllDemos(lang) { updateAutoDemo(lang); updateTableDemo(lang); updateShiftDemo(lang); }
+    ['auto-service','auto-vehicle','auto-day','auto-slot'].forEach(id => { const el=document.getElementById(id); el && ['input','change'].forEach(ev => el.addEventListener(ev, ()=>updateAutoDemo(localStorage.getItem('pag_lang') || 'en'))); });
+    ['table-guests','table-time','table-area','table-occasion'].forEach(id => { const el=document.getElementById(id); el && ['input','change'].forEach(ev => el.addEventListener(ev, ()=>updateTableDemo(localStorage.getItem('pag_lang') || 'en'))); });
+    ['shift-site','shift-type','shift-workers','shift-coverage'].forEach(id => { const el=document.getElementById(id); el && ['input','change'].forEach(ev => el.addEventListener(ev, ()=>updateShiftDemo(localStorage.getItem('pag_lang') || 'en'))); });
+    document.querySelectorAll('.demo-open').forEach(btn => btn.addEventListener('click', () => {
+      const modal = document.getElementById(`demo-${btn.dataset.demo}`);
+      if (modal) { modal.classList.add('active'); modal.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+    }));
+    document.querySelectorAll('[data-demo-close]').forEach(btn => btn.addEventListener('click', () => {
+      const modal = btn.closest('.demo-modal'); if(modal){ modal.classList.remove('active'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+    }));
+    document.querySelectorAll('.demo-modal').forEach(modal => modal.addEventListener('click', e => { if(e.target===modal){ modal.classList.remove('active'); modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; } }));
+    document.addEventListener('keydown', e => { if(e.key==='Escape'){ document.querySelectorAll('.demo-modal.active').forEach(m=>{m.classList.remove('active');m.setAttribute('aria-hidden','true');}); document.body.style.overflow=''; } });
+
+    const savedLang = localStorage.getItem('pag_lang') || 'en';
+    applyTranslations(savedLang);
+    updateAllDemos(savedLang);
+  </script>
+</body>
+</html>
