@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Growth Services | Prague AI Growth Agency</title>
+  <meta name="description" content="Webové stránky, e-shopy, landing pages, SEO, grafika, Meta Ads, Google Ads a AI automatizace pro firmy v Praze." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://marjanmitrovic.github.io/aiagency/digital-growth.html" />
+  <meta property="og:title" content="All-in-One Digital Growth Services | Prague AI Growth Agency" />
+  <meta property="og:description" content="Web, marketing, grafika, reklamy a AI automatizace v jednom řešení." />
+  <meta property="og:image" content="https://marjanmitrovic.github.io/aiagency/og-cover.png" />
+  <link rel="icon" type="image/svg+xml" href="assets/prague-ai-growth-icon.svg" />
+  <style>
+    :root {
+      --bg:#07111f;
+      --bg2:#0d1930;
+      --card:rgba(255,255,255,.065);
+      --line:rgba(255,255,255,.12);
+      --text:#eef4ff;
+      --muted:#aebbd5;
+      --accent:#8aa4ff;
+      --accent2:#67e8f9;
+      --accent3:#c4b5fd;
+      --success:#86efac;
+      --max:1180px;
+      --shadow:0 28px 90px rgba(0,0,0,.36);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      font-family:Inter,Arial,Helvetica,sans-serif;
+      line-height:1.6;
+      background:
+        radial-gradient(circle at 8% 0%,rgba(103,232,249,.14),transparent 28%),
+        radial-gradient(circle at 94% 10%,rgba(138,164,255,.18),transparent 30%),
+        linear-gradient(180deg,var(--bg),var(--bg2) 62%,#091222);
+    }
+    body:before{
+      content:"";position:fixed;inset:0;pointer-events:none;opacity:.34;
+      background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+      background-size:42px 42px;
+      mask-image:linear-gradient(180deg,#000,transparent 88%);
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(var(--max),calc(100% - 32px));margin:auto}
+    .nav{
+      position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line);
+      background:rgba(7,17,31,.82);backdrop-filter:blur(18px);
+    }
+    .nav-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand img{width:210px;max-height:54px;object-fit:contain;object-position:left center}
+    .nav-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .lang{display:flex;padding:4px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.04)}
+    .lang button{border:0;background:transparent;color:var(--muted);font-weight:800;padding:7px 9px;border-radius:10px;cursor:pointer}
+    .lang button.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07111f}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 18px;border-radius:14px;border:1px solid var(--line);font-weight:850;transition:.2s ease;cursor:pointer}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{color:#07111f;border:0;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 16px 45px rgba(103,232,249,.18)}
+    .btn-secondary{background:rgba(255,255,255,.05)}
+    .hero{position:relative;overflow:hidden;padding:88px 0 68px}
+    .hero:after{content:"";position:absolute;width:440px;height:440px;border:1px solid rgba(103,232,249,.17);border-radius:50%;right:-155px;top:-95px;box-shadow:0 0 80px rgba(103,232,249,.06) inset}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;position:relative;z-index:1}
+    .eyebrow{display:inline-flex;gap:9px;align-items:center;padding:8px 12px;border:1px solid rgba(103,232,249,.25);border-radius:999px;color:var(--accent2);font-weight:800;background:rgba(103,232,249,.06);text-transform:uppercase;font-size:.78rem;letter-spacing:.08em}
+    h1{font-size:clamp(2.5rem,6vw,5.2rem);line-height:1.01;letter-spacing:-.045em;margin:20px 0 22px;max-width:850px}
+    .gradient{background:linear-gradient(90deg,var(--accent2),var(--accent),var(--accent3));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{font-size:1.12rem;color:var(--muted);max-width:760px;margin:0 0 30px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-card{padding:26px;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));box-shadow:var(--shadow);backdrop-filter:blur(14px)}
+    .hero-card h2{font-size:1.35rem;margin:0 0 8px}
+    .hero-card>p{font-size:.98rem;margin:0 0 18px}
+    .stack{display:grid;gap:11px}
+    .stack-item{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid var(--line);border-radius:15px;background:rgba(0,0,0,.14)}
+    .stack-item b{display:block;font-size:.95rem}.stack-item span{display:block;color:var(--muted);font-size:.82rem}
+    .dot{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;flex:0 0 auto;background:linear-gradient(135deg,rgba(138,164,255,.25),rgba(103,232,249,.20));color:var(--accent2);font-weight:900}
+    section{padding:76px 0}
+    .section-head{max-width:760px;margin-bottom:30px}
+    .section-kicker{color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;font-weight:850;font-size:.78rem}
+    .section-head h2{font-size:clamp(2rem,4vw,3.25rem);line-height:1.08;letter-spacing:-.03em;margin:8px 0 12px}
+    .section-head p{color:var(--muted);font-size:1.05rem;margin:0}
+    .services{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .service{position:relative;padding:22px;min-height:238px;border:1px solid var(--line);border-radius:22px;background:var(--card);overflow:hidden;transition:.25s ease}
+    .service:hover{transform:translateY(-5px);border-color:rgba(103,232,249,.35);box-shadow:0 22px 50px rgba(0,0,0,.22)}
+    .service:after{content:"";position:absolute;inset:auto -40px -70px auto;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(103,232,249,.13),transparent 65%)}
+    .service-icon{width:49px;height:49px;border-radius:15px;display:grid;place-items:center;margin-bottom:18px;color:var(--accent2);background:linear-gradient(135deg,rgba(138,164,255,.22),rgba(103,232,249,.16));border:1px solid rgba(103,232,249,.18)}
+    .service-icon svg{width:25px;height:25px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .service h3{font-size:1.12rem;line-height:1.3;margin:0 0 9px}
+    .service p{color:var(--muted);font-size:.93rem;margin:0;position:relative;z-index:1}
+    .all-in-one{padding:34px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,rgba(138,164,255,.12),rgba(103,232,249,.07),rgba(196,181,253,.08));box-shadow:var(--shadow)}
+    .all-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:34px;align-items:center}
+    .all-in-one h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin:8px 0 14px}
+    .all-in-one p{color:var(--muted)}
+    .flow{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .flow-card{padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(7,17,31,.45)}
+    .flow-card strong{display:block;margin-bottom:5px}.flow-card span{color:var(--muted);font-size:.9rem}
+    .audiences{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+    .audience{padding:18px 12px;text-align:center;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.045)}
+    .audience b{display:block;font-size:.92rem;margin-top:9px}
+    .audience-symbol{font-size:1.7rem;line-height:1}
+    .quote{margin-top:28px;padding:22px 24px;border:1px solid rgba(103,232,249,.2);border-radius:20px;background:rgba(103,232,249,.055);font-size:1.08rem}
+    .quote strong{color:var(--accent2)}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .step{padding:22px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+    .step-no{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07111f;font-weight:950;margin-bottom:15px}
+    .step h3{margin:0 0 7px}.step p{margin:0;color:var(--muted);font-size:.92rem}
+    .cta{padding:42px;border:1px solid var(--line);border-radius:30px;text-align:center;background:radial-gradient(circle at 50% 0%,rgba(103,232,249,.15),transparent 48%),rgba(255,255,255,.055);box-shadow:var(--shadow)}
+    .cta h2{font-size:clamp(2rem,4vw,3.25rem);line-height:1.08;margin:0 0 12px}.cta p{color:var(--muted);max-width:700px;margin:0 auto 24px}
+    .contact-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    footer{padding:28px 0 42px;color:var(--muted);font-size:.9rem}
+    .footer-inner{display:flex;justify-content:space-between;gap:18px;align-items:center;border-top:1px solid var(--line);padding-top:24px}
+    .whatsapp{position:fixed;right:18px;bottom:18px;z-index:35;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#07111f;font-weight:950;box-shadow:0 18px 45px rgba(0,0,0,.35)}
+    @media(max-width:980px){.hero-grid,.all-grid{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}.audiences{grid-template-columns:repeat(3,1fr)}.process{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.nav-inner{min-height:68px}.brand img{width:154px}.nav-actions>.btn{display:none}.hero{padding:60px 0 46px}.hero-card{padding:20px}section{padding:58px 0}.services,.flow,.process{grid-template-columns:1fr}.audiences{grid-template-columns:repeat(2,1fr)}.service{min-height:0}.all-in-one,.cta{padding:25px}.footer-inner{align-items:flex-start;flex-direction:column}h1{font-size:2.65rem}}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="./" aria-label="Prague AI Growth Agency">
+        <img src="assets/prague-ai-growth-logo.svg" alt="Prague AI Growth Agency" />
+      </a>
+      <div class="nav-actions">
+        <div class="lang" aria-label="Language">
+          <button type="button" data-lang="cs" class="active">CZ</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="sr">SR</button>
+        </div>
+        <a class="btn btn-secondary" href="./" data-i18n="back">Hlavní stránka</a>
+        <a class="btn btn-primary" href="#contact" data-i18n="navCta">Nezávazná konzultace</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow" data-i18n="eyebrow">Kompletní digitální růst pro firmy</div>
+          <h1 data-i18n-html="heroTitle">Web. Marketing. Design. Reklama. <span class="gradient">AI růst.</span></h1>
+          <p data-i18n="heroText">Vytváříme propojené digitální řešení, které pomáhá firmám získávat zákazníky, budovat důvěru a automatizovat opakující se práci.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#services" data-i18n="viewServices">Zobrazit služby</a>
+            <a class="btn btn-secondary" href="#contact" data-i18n="requestPlan">Získat návrh řešení</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h2 data-i18n="onePartner">Jeden partner pro celý digitální růst</h2>
+          <p data-i18n="onePartnerText">Od první stránky až po reklamy, leady a automatické follow-upy.</p>
+          <div class="stack">
+            <div class="stack-item"><div class="dot">01</div><div><b data-i18n="stack1a">Základ</b><span data-i18n="stack1b">Web, e-shop, landing page</span></div></div>
+            <div class="stack-item"><div class="dot">02</div><div><b data-i18n="stack2a">Viditelnost</b><span data-i18n="stack2b">SEO, grafika, obsah</span></div></div>
+            <div class="stack-item"><div class="dot">03</div><div><b data-i18n="stack3a">Akvizice</b><span data-i18n="stack3b">Meta Ads a Google Ads</span></div></div>
+            <div class="stack-item"><div class="dot">04</div><div><b data-i18n="stack4a">Automatizace</b><span data-i18n="stack4b">AI chatbot, rezervace, follow-up</span></div></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker" data-i18n="servicesKicker">All-in-one služby</div>
+          <h2 data-i18n="servicesTitle">Kompletní nabídka digitálního růstu</h2>
+          <p data-i18n="servicesText">Jednotný vizuál, funkční web, měřitelná reklama a automatizace, které společně tvoří systém pro získávání zákazníků.</p>
+        </div>
+        <div class="services">
+          <article class="service">
+            <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="15" rx="2"/><path d="M3 8h18M7 12h4M7 15h8"/></svg></div>
+            <h3 data-i18n="s1t">Firemní webové stránky</h3><p data-i18n="s1d">Moderní, rychlý a důvěryhodný web navržený pro reálné obchodní cíle.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M7.5 8.5 9.6 16l2.4-6 2.4 6 2.1-7.5"/></svg></div>
+            <h3 data-i18n="s2t">WordPress vývoj</h3><p data-i18n="s2d">Weby, které můžete snadno spravovat, rozšiřovat a aktualizovat.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 5h2l2.2 9.2a2 2 0 0 0 2 1.5h7.9a2 2 0 0 0 1.9-1.4L21 8H7"/><circle cx="10" cy="19" r="1.2"/><circle cx="18" cy="19" r="1.2"/></svg></div>
+            <h3 data-i18n="s3t">E-commerce a e-shopy</h3><p data-i18n="s3d">Přehledný online prodej, platby, produkty a nákupní cesta bez zbytečného tření.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M7 7h10M7 11h10M7 15h6"/></svg></div>
+            <h3 data-i18n="s4t">Landing pages</h3><p data-i18n="s4d">Cílené prodejní stránky pro kampaně, služby, akce a získávání leadů.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5M7 11l2-2 2 2 3-4"/></svg></div>
+            <h3 data-i18n="s5t">SEO-ready weby</h3><p data-i18n="s5d">Technický základ, struktura a obsah připravené pro lepší viditelnost ve vyhledávání.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon"><svg viewBox="0 0 24 24"><path d="m4 20 4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20Z"/><path d="m13.5 7.5 3 3"/></svg></div>
+            <h3 data-i18n="s6t">Grafický design</h3><p data-i18n="s6d">Vizuály, reklamní bannery, sociální obsah a materiály v jednotné identitě značky.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M9 8H6a3 3 0 0 0-3 3v5a3 3 0 0 0 3 3h3l7 3V5L9 8Z"/><path d="M16 9a4 4 0 0 1 0 8M19 7a7 7 0 0 1 0 12"/></svg></div>
+            <h3 data-i18n="s7t">Facebook & Instagram Ads</h3><p data-i18n="s7d">Kampaně zaměřené na relevantní publikum, leady, návštěvnost a prodej.</p>
+          </article>
+          <article class="service">
+            <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 3 4 21h4l1.6-4h5L16 21h4L12 3Z"/><path d="M10.8 13h2.4"/></svg></div>
+            <h3 data-i18n="s8t">Google Ads</h3><p data-i18n="s8d">Vyhledávací kampaně, které osloví zákazníky právě ve chvíli, kdy službu hledají.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container all-in-one">
+        <div class="all-grid">
+          <div>
+            <div class="section-kicker" data-i18n="systemKicker">Více než jednotlivé služby</div>
+            <h2 data-i18n="systemTitle">Digitální růst propojený s AI automatizací</h2>
+            <p data-i18n="systemText">Web přivede návštěvníka, reklama vytvoří poptávku a AI systém okamžitě odpoví, kvalifikuje lead, nabídne termín a připomene další krok.</p>
+            <a class="btn btn-primary" href="#contact" data-i18n="buildSystem">Navrhnout růstový systém</a>
+          </div>
+          <div class="flow">
+            <div class="flow-card"><strong data-i18n="f1t">1. Přilákat</strong><span data-i18n="f1d">SEO, Meta Ads, Google Ads a obsah.</span></div>
+            <div class="flow-card"><strong data-i18n="f2t">2. Přesvědčit</strong><span data-i18n="f2d">Silný web, landing page a důvěryhodný design.</span></div>
+            <div class="flow-card"><strong data-i18n="f3t">3. Zachytit</strong><span data-i18n="f3d">Formuláře, chatbot, rezervace a lead capture.</span></div>
+            <div class="flow-card"><strong data-i18n="f4t">4. Proměnit</strong><span data-i18n="f4d">Automatické odpovědi, follow-up a CRM workflow.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker" data-i18n="fitKicker">Ideální pro</div>
+          <h2 data-i18n="fitTitle">Firmy, které chtějí růst profesionálně</h2>
+          <p data-i18n="fitText">Řešení přizpůsobujeme oboru, zákazníkům, rozpočtu a aktuální fázi podnikání.</p>
+        </div>
+        <div class="audiences">
+          <div class="audience"><div class="audience-symbol">🚀</div><b data-i18n="a1">Start-upy</b></div>
+          <div class="audience"><div class="audience-symbol">🍽️</div><b data-i18n="a2">Restaurace</b></div>
+          <div class="audience"><div class="audience-symbol">🏢</div><b data-i18n="a3">Reality</b></div>
+          <div class="audience"><div class="audience-symbol">✚</div><b data-i18n="a4">Kliniky</b></div>
+          <div class="audience"><div class="audience-symbol">⚙️</div><b data-i18n="a5">Servisní firmy</b></div>
+          <div class="audience"><div class="audience-symbol">💼</div><b data-i18n="a6">Firemní značky</b></div>
+        </div>
+        <div class="quote" data-i18n-html="quote">Profesionální design pomáhá firmám budovat <strong>důvěru</strong> a získávat <strong>nové zákazníky</strong>.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker" data-i18n="processKicker">Jednoduchý proces</div>
+          <h2 data-i18n="processTitle">Od cíle k fungujícímu systému</h2>
+        </div>
+        <div class="process">
+          <div class="step"><div class="step-no">1</div><h3 data-i18n="p1t">Analýza</h3><p data-i18n="p1d">Zjistíme, co dnes nefunguje a kde je největší růstová příležitost.</p></div>
+          <div class="step"><div class="step-no">2</div><h3 data-i18n="p2t">Návrh</h3><p data-i18n="p2d">Navrhneme správnou kombinaci webu, designu, reklamy a automatizace.</p></div>
+          <div class="step"><div class="step-no">3</div><h3 data-i18n="p3t">Realizace</h3><p data-i18n="p3d">Vytvoříme, propojíme, otestujeme a připravíme řešení ke spuštění.</p></div>
+          <div class="step"><div class="step-no">4</div><h3 data-i18n="p4t">Růst</h3><p data-i18n="p4d">Měříme výsledky, optimalizujeme výkon a rozšiřujeme systém podle potřeb.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container cta">
+        <h2 data-i18n="ctaTitle">Potřebujete web, reklamu nebo kompletní růstový systém?</h2>
+        <p data-i18n="ctaText">Popište stručně svůj cíl. Připravíme praktický návrh, co má největší smysl udělat jako první.</p>
+        <div class="contact-row">
+          <a class="btn btn-primary" href="mailto:marjan.posao@gmail.com?subject=Digital%20Growth%20Services%20%E2%80%93%20Prague%20AI%20Growth" data-i18n="emailCta">Napsat e-mail</a>
+          <a class="btn btn-secondary" href="https://wa.me/420722080268?text=Dobr%C3%BD%20den%2C%20m%C3%A1m%20z%C3%A1jem%20o%20Digital%20Growth%20Services." target="_blank" rel="noopener" data-i18n="waCta">WhatsApp konzultace</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Prague AI Growth Agency</div>
+      <div>marjan.posao@gmail.com · +420 722 080 268</div>
+    </div>
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/420722080268?text=Dobr%C3%BD%20den%2C%20m%C3%A1m%20z%C3%A1jem%20o%20Digital%20Growth%20Services." target="_blank" rel="noopener" aria-label="WhatsApp">W</a>
+
+  <script>
+    const translations = {
+      cs: {
+        back:'Hlavní stránka',navCta:'Nezávazná konzultace',eyebrow:'Kompletní digitální růst pro firmy',
+        heroTitle:'Web. Marketing. Design. Reklama. <span class="gradient">AI růst.</span>',
+        heroText:'Vytváříme propojené digitální řešení, které pomáhá firmám získávat zákazníky, budovat důvěru a automatizovat opakující se práci.',
+        viewServices:'Zobrazit služby',requestPlan:'Získat návrh řešení',onePartner:'Jeden partner pro celý digitální růst',onePartnerText:'Od první stránky až po reklamy, leady a automatické follow-upy.',
+        stack1a:'Základ',stack1b:'Web, e-shop, landing page',stack2a:'Viditelnost',stack2b:'SEO, grafika, obsah',stack3a:'Akvizice',stack3b:'Meta Ads a Google Ads',stack4a:'Automatizace',stack4b:'AI chatbot, rezervace, follow-up',
+        servicesKicker:'All-in-one služby',servicesTitle:'Kompletní nabídka digitálního růstu',servicesText:'Jednotný vizuál, funkční web, měřitelná reklama a automatizace, které společně tvoří systém pro získávání zákazníků.',
+        s1t:'Firemní webové stránky',s1d:'Moderní, rychlý a důvěryhodný web navržený pro reálné obchodní cíle.',s2t:'WordPress vývoj',s2d:'Weby, které můžete snadno spravovat, rozšiřovat a aktualizovat.',s3t:'E-commerce a e-shopy',s3d:'Přehledný online prodej, platby, produkty a nákupní cesta bez zbytečného tření.',s4t:'Landing pages',s4d:'Cílené prodejní stránky pro kampaně, služby, akce a získávání leadů.',s5t:'SEO-ready weby',s5d:'Technický základ, struktura a obsah připravené pro lepší viditelnost ve vyhledávání.',s6t:'Grafický design',s6d:'Vizuály, reklamní bannery, sociální obsah a materiály v jednotné identitě značky.',s7t:'Facebook & Instagram Ads',s7d:'Kampaně zaměřené na relevantní publikum, leady, návštěvnost a prodej.',s8t:'Google Ads',s8d:'Vyhledávací kampaně, které osloví zákazníky právě ve chvíli, kdy službu hledají.',
+        systemKicker:'Více než jednotlivé služby',systemTitle:'Digitální růst propojený s AI automatizací',systemText:'Web přivede návštěvníka, reklama vytvoří poptávku a AI systém okamžitě odpoví, kvalifikuje lead, nabídne termín a připomene další krok.',buildSystem:'Navrhnout růstový systém',
+        f1t:'1. Přilákat',f1d:'SEO, Meta Ads, Google Ads a obsah.',f2t:'2. Přesvědčit',f2d:'Silný web, landing page a důvěryhodný design.',f3t:'3. Zachytit',f3d:'Formuláře, chatbot, rezervace a lead capture.',f4t:'4. Proměnit',f4d:'Automatické odpovědi, follow-up a CRM workflow.',
+        fitKicker:'Ideální pro',fitTitle:'Firmy, které chtějí růst profesionálně',fitText:'Řešení přizpůsobujeme oboru, zákazníkům, rozpočtu a aktuální fázi podnikání.',a1:'Start-upy',a2:'Restaurace',a3:'Reality',a4:'Kliniky',a5:'Servisní firmy',a6:'Firemní značky',quote:'Profesionální design pomáhá firmám budovat <strong>důvěru</strong> a získávat <strong>nové zákazníky</strong>.',
+        processKicker:'Jednoduchý proces',processTitle:'Od cíle k fungujícímu systému',p1t:'Analýza',p1d:'Zjistíme, co dnes nefunguje a kde je největší růstová příležitost.',p2t:'Návrh',p2d:'Navrhneme správnou kombinaci webu, designu, reklamy a automatizace.',p3t:'Realizace',p3d:'Vytvoříme, propojíme, otestujeme a připravíme řešení ke spuštění.',p4t:'Růst',p4d:'Měříme výsledky, optimalizujeme výkon a rozšiřujeme systém podle potřeb.',
+        ctaTitle:'Potřebujete web, reklamu nebo kompletní růstový systém?',ctaText:'Popište stručně svůj cíl. Připravíme praktický návrh, co má největší smysl udělat jako první.',emailCta:'Napsat e-mail',waCta:'WhatsApp konzultace'
+      },
+      en: {
+        back:'Main website',navCta:'Free consultation',eyebrow:'Complete digital growth for businesses',
+        heroTitle:'Websites. Marketing. Design. Ads. <span class="gradient">AI growth.</span>',
+        heroText:'We build connected digital solutions that help businesses attract customers, build trust, and automate repetitive work.',
+        viewServices:'View services',requestPlan:'Get a solution plan',onePartner:'One partner for your entire digital growth',onePartnerText:'From the first website to ads, leads, and automated follow-ups.',
+        stack1a:'Foundation',stack1b:'Website, e-commerce, landing page',stack2a:'Visibility',stack2b:'SEO, graphics, content',stack3a:'Acquisition',stack3b:'Meta Ads and Google Ads',stack4a:'Automation',stack4b:'AI chatbot, booking, follow-up',
+        servicesKicker:'All-in-one services',servicesTitle:'A complete digital growth offer',servicesText:'Consistent visuals, a functional website, measurable advertising, and automation working together as one customer acquisition system.',
+        s1t:'Business website design',s1d:'A modern, fast, trustworthy website designed around real business goals.',s2t:'WordPress development',s2d:'Websites you can easily manage, expand, and update.',s3t:'E-commerce websites',s3d:'Clear online selling, payments, products, and a friction-free buying journey.',s4t:'Landing pages',s4d:'Focused sales pages for campaigns, services, events, and lead generation.',s5t:'SEO-friendly websites',s5d:'Technical foundations, structure, and content prepared for stronger search visibility.',s6t:'Graphic design',s6d:'Visuals, ad banners, social content, and materials with a consistent brand identity.',s7t:'Facebook & Instagram Ads',s7d:'Campaigns focused on relevant audiences, leads, traffic, and sales.',s8t:'Google Ads',s8d:'Search campaigns that reach customers at the exact moment they are looking for your service.',
+        systemKicker:'More than separate services',systemTitle:'Digital growth connected with AI automation',systemText:'The website attracts a visitor, advertising creates demand, and the AI system replies instantly, qualifies the lead, offers a booking, and follows up.',buildSystem:'Design my growth system',
+        f1t:'1. Attract',f1d:'SEO, Meta Ads, Google Ads, and content.',f2t:'2. Convince',f2d:'A strong website, landing page, and trustworthy design.',f3t:'3. Capture',f3d:'Forms, chatbot, booking, and lead capture.',f4t:'4. Convert',f4d:'Automatic replies, follow-up, and CRM workflows.',
+        fitKicker:'Perfect for',fitTitle:'Businesses that want professional growth',fitText:'Every solution is adapted to your industry, customers, budget, and current stage of business.',a1:'Startups',a2:'Restaurants',a3:'Real estate',a4:'Clinics',a5:'Service businesses',a6:'Corporate brands',quote:'Professional design helps businesses build <strong>trust</strong> and attract <strong>new clients</strong>.',
+        processKicker:'Simple process',processTitle:'From a business goal to a working system',p1t:'Audit',p1d:'We identify what is not working and where the biggest growth opportunity is.',p2t:'Plan',p2d:'We propose the right mix of website, design, advertising, and automation.',p3t:'Build',p3d:'We create, connect, test, and prepare the solution for launch.',p4t:'Grow',p4d:'We measure results, improve performance, and expand the system as needed.',
+        ctaTitle:'Do you need a website, advertising, or a complete growth system?',ctaText:'Briefly describe your goal. We will prepare a practical recommendation for what makes the most sense to do first.',emailCta:'Send an email',waCta:'WhatsApp consultation'
+      },
+      sr: {
+        back:'Glavni sajt',navCta:'Besplatne konsultacije',eyebrow:'Kompletan digitalni rast za firme',
+        heroTitle:'Sajtovi. Marketing. Dizajn. Oglasi. <span class="gradient">AI rast.</span>',
+        heroText:'Gradimo povezana digitalna rešenja koja firmama pomažu da privuku klijente, izgrade poverenje i automatizuju ponavljajuće poslove.',
+        viewServices:'Pogledaj usluge',requestPlan:'Zatraži predlog rešenja',onePartner:'Jedan partner za kompletan digitalni rast',onePartnerText:'Od prvog sajta do oglasa, leadova i automatskog praćenja klijenata.',
+        stack1a:'Osnova',stack1b:'Sajt, e-prodavnica, landing stranica',stack2a:'Vidljivost',stack2b:'SEO, grafika, sadržaj',stack3a:'Akvizicija',stack3b:'Meta Ads i Google Ads',stack4a:'Automatizacija',stack4b:'AI chatbot, rezervacije, follow-up',
+        servicesKicker:'All-in-one usluge',servicesTitle:'Kompletna ponuda za digitalni rast',servicesText:'Usklađen vizuelni identitet, funkcionalan sajt, merljivo oglašavanje i automatizacija koji zajedno čine sistem za pridobijanje klijenata.',
+        s1t:'Izrada poslovnih sajtova',s1d:'Moderan, brz i pouzdan sajt projektovan prema stvarnim poslovnim ciljevima.',s2t:'WordPress razvoj',s2d:'Sajtovi koje možete lako da uređujete, proširujete i ažurirate.',s3t:'E-commerce i e-prodavnice',s3d:'Pregledna online prodaja, plaćanje, proizvodi i jednostavan put do kupovine.',s4t:'Landing stranice',s4d:'Ciljane prodajne stranice za kampanje, usluge, događaje i prikupljanje leadova.',s5t:'SEO-friendly sajtovi',s5d:'Tehnička osnova, struktura i sadržaj pripremljeni za bolju vidljivost u pretrazi.',s6t:'Grafički dizajn',s6d:'Vizuali, reklamni baneri, sadržaj za mreže i materijali u jedinstvenom identitetu brenda.',s7t:'Facebook & Instagram Ads',s7d:'Kampanje usmerene na relevantnu publiku, leadove, posete i prodaju.',s8t:'Google Ads',s8d:'Oglasi u pretrazi koji dolaze do klijenta baš kada traži vašu uslugu.',
+        systemKicker:'Više od pojedinačnih usluga',systemTitle:'Digitalni rast povezan sa AI automatizacijom',systemText:'Sajt privuče posetioca, oglas napravi interesovanje, a AI sistem odmah odgovara, kvalifikuje lead, nudi termin i šalje naredni podsetnik.',buildSystem:'Napravi moj sistem rasta',
+        f1t:'1. Privuci',f1d:'SEO, Meta Ads, Google Ads i sadržaj.',f2t:'2. Ubedi',f2d:'Snažan sajt, landing stranica i pouzdan dizajn.',f3t:'3. Prikupi',f3d:'Forme, chatbot, rezervacije i lead capture.',f4t:'4. Pretvori',f4d:'Automatski odgovori, follow-up i CRM tokovi.',
+        fitKicker:'Idealno za',fitTitle:'Firme koje žele profesionalan rast',fitText:'Rešenje prilagođavamo delatnosti, klijentima, budžetu i trenutnoj fazi poslovanja.',a1:'Startapi',a2:'Restorani',a3:'Nekretnine',a4:'Klinike',a5:'Uslužne firme',a6:'Korporativni brendovi',quote:'Profesionalan dizajn pomaže firmama da izgrade <strong>poverenje</strong> i privuku <strong>nove klijente</strong>.',
+        processKicker:'Jednostavan proces',processTitle:'Od poslovnog cilja do sistema koji radi',p1t:'Analiza',p1d:'Otkrivamo šta trenutno ne radi i gde je najveća prilika za rast.',p2t:'Plan',p2d:'Predlažemo pravu kombinaciju sajta, dizajna, oglašavanja i automatizacije.',p3t:'Izrada',p3d:'Pravimo, povezujemo, testiramo i pripremamo rešenje za puštanje u rad.',p4t:'Rast',p4d:'Merimo rezultate, poboljšavamo učinak i širimo sistem prema potrebama.',
+        ctaTitle:'Treba vam sajt, reklama ili kompletan sistem za rast?',ctaText:'Ukratko opišite cilj. Pripremićemo praktičan predlog šta ima najviše smisla uraditi prvo.',emailCta:'Pošalji e-mail',waCta:'WhatsApp konsultacije'
+      }
+    };
+
+    function applyLanguage(lang){
+      const dict=translations[lang]||translations.cs;
+      document.documentElement.lang=lang;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(dict[key])el.textContent=dict[key]});
+      document.querySelectorAll('[data-i18n-html]').forEach(el=>{const key=el.dataset.i18nHtml;if(dict[key])el.innerHTML=dict[key]});
+      document.querySelectorAll('[data-lang]').forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===lang));
+      localStorage.setItem('digitalGrowthLang',lang);
+    }
+    document.querySelectorAll('[data-lang]').forEach(btn=>btn.addEventListener('click',()=>applyLanguage(btn.dataset.lang)));
+    applyLanguage(localStorage.getItem('digitalGrowthLang')||'cs');
+  </script>
+</body>
+</html>
