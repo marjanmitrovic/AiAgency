@@ -1,0 +1,35 @@
+name: Link AI audit buttons
+on:
+  push:
+    paths:
+      - '.github/workflows/link-audit-buttons.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Link visible audit buttons to audit page
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          old=s
+          s=s.replace('<a class="btn btn-primary" href="#contact" data-i18n="nav_cta">Free AI Audit</a>', '<a class="btn btn-primary" href="audit.html?lang=en" id="navAuditBtn" data-i18n="nav_cta">Free AI Audit</a>')
+          s=s.replace('<a class="btn btn-primary" href="#contact" data-i18n="hero_btn_1">Get a Free Audit</a>', '<a class="btn btn-primary" href="audit.html?lang=en" id="heroAuditBtn" data-i18n="hero_btn_1">Get a Free Audit</a>')
+          hook='''\n<script>\n(function(){\n  function syncAuditLinks(){\n    const active=document.querySelector('.lang-btn.active');\n    const lang=active&&['en','sr','cz'].includes(active.dataset.lang)?active.dataset.lang:'en';\n    ['navAuditBtn','heroAuditBtn'].forEach(id=>{const el=document.getElementById(id);if(el)el.href='audit.html?lang='+lang;});\n  }\n  document.addEventListener('click',e=>{if(e.target.closest('.lang-btn'))setTimeout(syncAuditLinks,0);});\n  document.addEventListener('DOMContentLoaded',syncAuditLinks);\n})();\n</script>\n'''
+          if 'id="navAuditBtn"' in s and 'function syncAuditLinks()' not in s:
+              s=s.replace('</body>',hook+'</body>',1)
+          if s!=old:
+              p.write_text(s,encoding='utf-8')
+          PY
+      - name: Commit homepage links
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Link visible Free AI Audit buttons to audit page"
+          git push
