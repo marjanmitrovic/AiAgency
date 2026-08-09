@@ -1472,7 +1472,7 @@
           <button class="lang-btn" data-lang="sr">SR</button>
           <button class="lang-btn" data-lang="cz">CZ</button>
         </div>
-        <a class="btn btn-primary" href="#contact" data-i18n="nav_cta">Free AI Audit</a>
+        <a class="btn btn-primary" href="audit.html?lang=en" id="navAuditBtn" data-i18n="nav_cta">Free AI Audit</a>
       </div>
     </div>
   </header>
@@ -1511,7 +1511,7 @@
             We help Prague businesses automate customer communication, capture more leads, reduce missed opportunities, and save hours every week with practical AI systems.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact" data-i18n="hero_btn_1">Get a Free Audit</a>
+            <a class="btn btn-primary" href="audit.html?lang=en" id="heroAuditBtn" data-i18n="hero_btn_1">Get a Free Audit</a>
             <a class="btn btn-secondary" href="#pricing" data-i18n="hero_btn_2">See Packages</a>
           </div>
           <div class="proof">
@@ -3242,6 +3242,18 @@
 })();
 </script>
 
+
+<script>
+(function(){
+  function syncAuditLinks(){
+    const active=document.querySelector('.lang-btn.active');
+    const lang=active&&['en','sr','cz'].includes(active.dataset.lang)?active.dataset.lang:'en';
+    ['navAuditBtn','heroAuditBtn'].forEach(id=>{const el=document.getElementById(id);if(el)el.href='audit.html?lang='+lang;});
+  }
+  document.addEventListener('click',e=>{if(e.target.closest('.lang-btn'))setTimeout(syncAuditLinks,0);});
+  document.addEventListener('DOMContentLoaded',syncAuditLinks);
+})();
+</script>
 </body>
 </html>
 
