@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HF Auto — návrh nového webu</title>
+<style>
+:root{
+  --bg:#0d1117;
+  --panel:#151b23;
+  --panel2:#1c2430;
+  --text:#f6f7f9;
+  --muted:#aab4c0;
+  --accent:#ff8a1f;
+  --accent2:#ffb45e;
+  --line:#2a3543;
+  --ok:#7ed6a6;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 85% 5%,rgba(255,138,31,.12),transparent 28rem),
+    var(--bg);
+  color:var(--text);
+}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,calc(100% - 36px));margin:auto}
+.topnote{
+  font-size:12px;text-align:center;padding:8px 14px;color:#d5dce5;
+  background:#111821;border-bottom:1px solid var(--line)
+}
+nav{
+  position:sticky;top:0;z-index:20;
+  backdrop-filter:blur(16px);
+  background:rgba(13,17,23,.88);
+  border-bottom:1px solid rgba(255,255,255,.06)
+}
+.navin{display:flex;align-items:center;justify-content:space-between;min-height:72px;gap:24px}
+.brand{font-weight:900;font-size:23px;letter-spacing:.4px}
+.brand span{color:var(--accent)}
+.links{display:flex;gap:24px;color:#c7d0da;font-size:14px}
+.actions{display:flex;gap:10px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:12px;padding:12px 18px;font-weight:800;border:1px solid var(--line);
+  transition:.2s;cursor:pointer;background:transparent;color:var(--text)
+}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#111}
+.btn.secondary{background:#171e27}
+.hero{padding:76px 0 48px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+.eyebrow{
+  display:inline-block;background:rgba(255,138,31,.1);color:var(--accent2);
+  border:1px solid rgba(255,138,31,.25);padding:7px 10px;border-radius:999px;
+  font-weight:800;font-size:12px;letter-spacing:.5px;text-transform:uppercase
+}
+h1{font-size:clamp(42px,7vw,76px);line-height:.97;margin:18px 0 20px;letter-spacing:-2.5px}
+h1 span{color:var(--accent)}
+.lead{font-size:19px;line-height:1.6;color:#c3ccd6;max-width:700px}
+.hero-cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.trust{display:flex;gap:22px;margin-top:34px;color:var(--muted);font-size:13px;flex-wrap:wrap}
+.trust b{color:white}
+.card{
+  border:1px solid var(--line);background:linear-gradient(180deg,#171f29,#121820);
+  border-radius:22px;padding:24px;box-shadow:0 18px 50px rgba(0,0,0,.25)
+}
+.quick-title{font-size:20px;font-weight:900;margin-bottom:4px}
+.quick-sub{color:var(--muted);font-size:14px;margin-bottom:18px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+label{display:block;font-size:12px;font-weight:700;color:#cdd5de;margin:0 0 6px}
+input,select,textarea{
+  width:100%;border:1px solid #344153;background:#0f151c;color:#fff;
+  border-radius:11px;padding:12px 13px;outline:none;font:inherit
+}
+input:focus,select:focus,textarea:focus{border-color:var(--accent)}
+textarea{min-height:92px;resize:vertical}
+.full{grid-column:1/-1}
+.section{padding:60px 0}
+.section h2{font-size:36px;margin:0 0 10px;letter-spacing:-1px}
+.section p.section-lead{color:var(--muted);max-width:700px;margin:0 0 28px;line-height:1.6}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.service{
+  padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--panel)
+}
+.service b{display:block;font-size:16px;margin:7px 0}
+.service small{color:var(--muted);line-height:1.5}
+.icon{
+  width:40px;height:40px;border-radius:12px;background:rgba(255,138,31,.12);
+  display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:900
+}
+.band{
+  margin:20px auto 0;border:1px solid rgba(255,138,31,.25);
+  background:linear-gradient(135deg,rgba(255,138,31,.13),rgba(255,138,31,.03));
+  border-radius:20px;padding:26px;display:flex;align-items:center;justify-content:space-between;gap:20px
+}
+.band h3{margin:0 0 6px;font-size:24px}
+.band p{margin:0;color:var(--muted)}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.info p{color:var(--muted);line-height:1.7}
+.info strong{color:white}
+footer{border-top:1px solid var(--line);margin-top:40px;padding:28px 0 40px;color:var(--muted);font-size:13px}
+.success{
+  display:none;margin-top:14px;padding:12px 14px;border-radius:10px;
+  background:rgba(126,214,166,.10);border:1px solid rgba(126,214,166,.25);color:var(--ok)
+}
+@media(max-width:850px){
+  .links{display:none}
+  .hero-grid,.contact{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr 1fr}
+  .hero{padding-top:48px}
+}
+@media(max-width:560px){
+  .container{width:min(100% - 24px,1120px)}
+  .actions .secondary{display:none}
+  .services,.grid2{grid-template-columns:1fr}
+  .full{grid-column:auto}
+  h1{font-size:48px}
+  .hero-cta .btn{width:100%}
+  .band{align-items:flex-start;flex-direction:column}
+}
+</style>
+</head>
+<body>
+<div class="topnote">NEOFICIÁLNÍ UKÁZKA NOVÉHO WEBU — připraveno jako obchodní demo pro HF Auto</div>
+
+<nav>
+  <div class="container navin">
+    <a class="brand" href="#"><span>HF</span> AUTO</a>
+    <div class="links">
+      <a href="#sluzby">Služby</a>
+      <a href="#objednat">Objednat servis</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <div class="actions">
+      <a class="btn secondary" href="tel:+420602657180">602 657 180</a>
+      <a class="btn primary" href="#objednat">Objednat servis</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Autoservis Praha 6</span>
+      <h1>Servis auta<br><span>bez zbytečného čekání.</span></h1>
+      <p class="lead">Opravy a údržba osobních i lehkých užitkových vozů všech značek. Pošlete nám údaje o autě, závadu a fotografie — servisní požadavek připravíte z mobilu během pár minut.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#objednat">Objednat servis online</a>
+        <a class="btn secondary" href="tel:+420602657180">Zavolat do servisu</a>
+      </div>
+      <div class="trust">
+        <span><b>Praha 6</b> — Papírenská 1</span>
+        <span><b>Po–Čt</b> 8:00–18:00</span>
+        <span><b>Pá</b> 8:00–17:00</span>
+      </div>
+    </div>
+
+    <div class="card" id="objednat">
+      <div class="quick-title">Rychlá objednávka servisu</div>
+      <div class="quick-sub">Vyplňte základní informace. Servis vás následně kontaktuje.</div>
+      <form id="serviceForm">
+        <div class="grid2">
+          <div>
+            <label>SPZ</label>
+            <input required placeholder="např. 2AB 1234">
+          </div>
+          <div>
+            <label>VIN (volitelné)</label>
+            <input placeholder="17 znaků">
+          </div>
+          <div>
+            <label>Typ služby</label>
+            <select required>
+              <option value="">Vyberte službu</option>
+              <option>Servisní prohlídka</option>
+              <option>Brzdy / podvozek</option>
+              <option>Rozvody / motor</option>
+              <option>Diagnostika</option>
+              <option>Klimatizace</option>
+              <option>Pneuservis</option>
+              <option>Geometrie</option>
+              <option>STK / emise</option>
+              <option>Jiný problém</option>
+            </select>
+          </div>
+          <div>
+            <label>Preferovaný termín</label>
+            <input type="date" required>
+          </div>
+          <div class="full">
+            <label>Popište problém</label>
+            <textarea placeholder="Co se s autem děje? Kontrolka, zvuk, vibrace, ztráta výkonu..."></textarea>
+          </div>
+          <div class="full">
+            <label>Fotografie závady / vozidla</label>
+            <input type="file" accept="image/*" multiple>
+          </div>
+          <div>
+            <label>Jméno</label>
+            <input required placeholder="Jan Novák">
+          </div>
+          <div>
+            <label>Telefon</label>
+            <input required type="tel" placeholder="+420 ...">
+          </div>
+          <div class="full">
+            <label>E-mail</label>
+            <input type="email" placeholder="vas@email.cz">
+          </div>
+          <div class="full">
+            <button class="btn primary" style="width:100%" type="submit">Odeslat požadavek</button>
+          </div>
+        </div>
+        <div class="success" id="success">Demo: požadavek byl připraven. V ostré verzi by dorazil přímo do servisu a zákazníkovi by přišlo potvrzení.</div>
+      </form>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="sluzby">
+  <div class="container">
+    <h2>Kompletní péče o váš vůz</h2>
+    <p class="section-lead">Od běžného servisu po složitější opravy. Jedna přehledná cesta k objednávce místo hledání kontaktů a dlouhého popisování problému po telefonu.</p>
+    <div class="services">
+      <div class="service"><div class="icon">01</div><b>Pravidelný servis</b><small>Servisní prohlídky, oleje, filtry, kapaliny a běžná údržba.</small></div>
+      <div class="service"><div class="icon">02</div><b>Brzdy a podvozek</b><small>Brzdové systémy, pérování, ložiska, podvozky a geometrie.</small></div>
+      <div class="service"><div class="icon">03</div><b>Motor a převodovka</b><small>Rozvody, opravy motorů, převodovek, výfuků a dekarbonizace.</small></div>
+      <div class="service"><div class="icon">04</div><b>Diagnostika</b><small>Identifikace závad mechanicky i pomocí měřicích a diagnostických přístrojů.</small></div>
+      <div class="service"><div class="icon">05</div><b>Klimatizace</b><small>Plnění a opravy klimatizací, ozónová dezinfekce interiéru.</small></div>
+      <div class="service"><div class="icon">06</div><b>STK a další služby</b><small>Zajištění emisí a technických prohlídek, autoskla, karoserie a příslušenství.</small></div>
+    </div>
+
+    <div class="band">
+      <div>
+        <h3>Nevíte přesně, co je špatně?</h3>
+        <p>Popište příznaky a přiložte fotografie. Servis dostane informace ještě před prvním kontaktem.</p>
+      </div>
+      <a class="btn primary" href="#objednat">Popsat závadu</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kontakt">
+  <div class="container contact">
+    <div class="card info">
+      <span class="eyebrow">Kontakt</span>
+      <h2 style="margin-top:14px">HF Auto s.r.o.</h2>
+      <p><strong>Autoservis</strong><br>Papírenská 1<br>160 00 Praha 6</p>
+      <p><strong>Telefon:</strong><br>+420 602 657 180<br>+420 607 614 733<br>+420 606 653 890</p>
+      <p><strong>E-mail:</strong><br>hfauto@seznam.cz</p>
+    </div>
+    <div class="card info">
+      <span class="eyebrow">Otevírací doba</span>
+      <h2 style="margin-top:14px">Kdy jsme tu pro vás</h2>
+      <p><strong>Pondělí–čtvrtek</strong><br>8:00–18:00</p>
+      <p><strong>Pátek</strong><br>8:00–17:00</p>
+      <p style="margin-top:26px">Online požadavek můžete připravit kdykoli. V ostré verzi lze doplnit automatickou e-mailovou/SMS odpověď a interní přehled zakázek.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    Demo koncept pro obchodní prezentaci. Nejde o oficiální web HF Auto ani o tvrzení o spolupráci s HF Auto s.r.o.
+  </div>
+</footer>
+
+<script>
+document.getElementById('serviceForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  document.getElementById('success').style.display='block';
+  document.getElementById('success').scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+</script>
+</body>
+</html>
