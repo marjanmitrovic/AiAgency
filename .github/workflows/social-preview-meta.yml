@@ -1,0 +1,134 @@
+name: SEO and social metadata
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Normalize SEO metadata
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          original = s
+
+          title = 'Prague AI Growth Agency | AI Automation for Businesses in Prague'
+          description = ('Prague AI Growth Agency helps businesses in Prague automate customer communication, '
+                         'lead generation, booking, CRM workflows and everyday operations with practical AI solutions.')
+
+          s = re.sub(r'<title>.*?</title>', f'<title>{title}</title>', s, count=1, flags=re.S)
+          s = re.sub(
+              r'<meta\s+name=["\']description["\']\s+content=["\'].*?["\']\s*/?>',
+              f'<meta name="description" content="{description}" />',
+              s,
+              count=1,
+              flags=re.S,
+          )
+
+          seo_block = '''  <!-- SEO / social preview -->
+          <link rel="canonical" href="https://marjanmitrovic.github.io/aiagency/" />
+          <meta name="robots" content="index,follow,max-image-preview:large" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://marjanmitrovic.github.io/aiagency/" />
+          <meta property="og:title" content="Prague AI Growth Agency | AI Automation in Prague" />
+          <meta property="og:description" content="Practical AI automation, chatbots, lead capture, booking and CRM workflows for businesses in Prague." />
+          <meta property="og:image" content="https://marjanmitrovic.github.io/aiagency/og-cover.png" />
+          <meta property="og:image:secure_url" content="https://marjanmitrovic.github.io/aiagency/og-cover.png" />
+          <meta property="og:image:type" content="image/png" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
+          <meta property="og:site_name" content="Prague AI Growth Agency" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Prague AI Growth Agency | AI Automation in Prague" />
+          <meta name="twitter:description" content="Practical AI automation, chatbots, lead capture, booking and CRM workflows for businesses in Prague." />
+          <meta name="twitter:image" content="https://marjanmitrovic.github.io/aiagency/og-cover.png" />
+          <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "@id": "https://marjanmitrovic.github.io/aiagency/#organization",
+            "name": "Prague AI Growth Agency",
+            "alternateName": "Prague AI Growth",
+            "url": "https://marjanmitrovic.github.io/aiagency/",
+            "logo": "https://marjanmitrovic.github.io/aiagency/og-cover.png",
+            "email": "marjan.posao@gmail.com",
+            "telephone": "+420722080268",
+            "areaServed": {
+              "@type": "City",
+              "name": "Prague"
+            },
+            "sameAs": [
+              "https://www.facebook.com/people/Prague-AI-Growth-Agency/61591859720092/"
+            ]
+          }
+          </script>'''
+
+          start_candidates = [
+              s.find('  <!-- Facebook / social preview -->'),
+              s.find('  <!-- SEO / social preview -->'),
+          ]
+          starts = [x for x in start_candidates if x != -1]
+          start = min(starts) if starts else -1
+          end = s.find('  <link rel="icon"')
+
+          if start != -1 and end != -1 and start < end:
+              s = s[:start] + seo_block + '\n' + s[end:]
+          elif end != -1:
+              s = s[:end] + seo_block + '\n' + s[end:]
+
+          # Strengthen exact brand-name signals without changing layout.
+          s = s.replace('alt="Prague AI Growth"', 'alt="Prague AI Growth Agency"')
+          s = s.replace('alt="Prague AI Growth icon"', 'alt="Prague AI Growth Agency icon"')
+          s = s.replace('Prague AI Growth is focused on one goal:', 'Prague AI Growth Agency is focused on one goal:')
+          s = s.replace('value="Prague AI Growth Website"', 'value="Prague AI Growth Agency Website"')
+
+          if s != original:
+              p.write_text(s, encoding='utf-8')
+
+          Path('robots.txt').write_text(
+              'User-agent: *\nAllow: /\n\nSitemap: https://marjanmitrovic.github.io/aiagency/sitemap.xml\n',
+              encoding='utf-8'
+          )
+
+          Path('sitemap.xml').write_text('''<?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <url>
+              <loc>https://marjanmitrovic.github.io/aiagency/</loc>
+              <changefreq>weekly</changefreq>
+              <priority>1.0</priority>
+            </url>
+            <url>
+              <loc>https://marjanmitrovic.github.io/aiagency/digital-growth.html</loc>
+              <changefreq>weekly</changefreq>
+              <priority>0.9</priority>
+            </url>
+            <url>
+              <loc>https://marjanmitrovic.github.io/aiagency/audit.html</loc>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
+            </url>
+          </urlset>
+          ''', encoding='utf-8')
+          PY
+
+      - name: Commit SEO updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html robots.txt sitemap.xml
+          if ! git diff --cached --quiet; then
+            git commit -m "Improve Prague AI Growth Agency SEO"
+            git push
+          fi
